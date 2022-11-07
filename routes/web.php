@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/importData', function () {
+    return \App\Http\Controllers\Controller::class();
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('hola', function() { return "Hola món!"; });
