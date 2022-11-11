@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Events;
 use App\Http\Requests\StoreEventsRequest;
 use App\Http\Requests\UpdateEventsRequest;
+use App\Models\Events;
 
 class EventsController extends Controller
 {
+
+    public static function importData()
+    {
+        $file = file_get_contents('https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json');
+        $data = json_decode($file, false);
+
+        Events::insert($data);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +24,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -23,10 +32,11 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public static function create()
     {
-        //
+
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +46,7 @@ class EventsController extends Controller
      */
     public function store(StoreEventsRequest $request)
     {
-        //
+
     }
 
     /**

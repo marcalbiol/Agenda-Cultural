@@ -12,14 +12,8 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public static function class()
-    {
-        $file = file_get_contents('https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json');
 
-        $data = json_decode($file, false);
 
-        var_dump($data);
 
-    }
 
 }

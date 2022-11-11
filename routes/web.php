@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/importData', function () {
-    return \App\Http\Controllers\Controller::class();
+Route::get('/import', function () {
+    return \App\Http\Controllers\EventsController::importData();
 });
 
 Route::get('/', function () {
