@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/import', function () {
-    return \App\Http\Controllers\EventsController::importData();
-});
-
 Route::get('/', function () {
     return view('welcome');
 });

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,29 +13,26 @@ return new class extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->string('codi')->nullable();
-            $table->string('data_fi')->nullable();
-            $table->string('data_inici')->nullable();
-            $table->string('denominaci')->nullable();
-            $table->string('descripcio')->nullable();
-            $table->string('entrades')->nullable();
-            $table->string('horari')->nullable();
-            $table->string('subt_tol')->nullable();
-            $table->string('tags_mbits')->nullable();
-            $table->string('tags_categor_es')->nullable();
-            $table->string('enlla_os')->nullable();
-            $table->string('imatges')->nullable();
-            $table->string('v_deos')->nullable();
-            $table->string('adre_a')->nullable();
-            $table->string('comarca_i_municipi')->nullable();
-            $table->string('email')->nullable();
-            $table->string('espai')->nullable();
-            $table->string('latitud')->nullable();
-            $table->string('longitud')->nullable();
-            $table->string('tel_fon')->nullable();
-            $table->string('url')->nullable();
-            $table->string('imgapp')->nullable();
-            $table->string('descripcio_html')->nullable();
+            $table->id();
+            $table->bigInteger('codi')->nullable();
+            $table->text('data_fi')->nullable();
+            $table->text('data_inici')->nullable();
+            $table->text('denominaci')->nullable();
+            $table->text('descripcio')->nullable();
+            $table->text('entrades')->nullable();
+            $table->text('horari')->nullable();
+            $table->text('subt_tol')->nullable();
+            $table->text('tags_mbits')->nullable();
+            $table->text('tags_categor_es')->nullable();
+            $table->text('enlla_os')->nullable();
+            $table->text('imatges')->nullable();
+            $table->text('adre_a')->nullable();
+            $table->text('comarca_i_municipi')->nullable();
+            $table->text('email')->nullable();
+            $table->text('espai')->nullable();
+            $table->text('tel_fon')->nullable();
+            $table->text('url')->nullable();
+            $table->text('descripcio_html')->nullable();
             $table->timestamps();
         });
     }

@@ -9,14 +9,6 @@ use App\Models\Events;
 class EventsController extends Controller
 {
 
-    public static function importData()
-    {
-        $file = file_get_contents('https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json');
-        $data = json_decode($file, false);
-
-        Events::insert($data);
-    }
-
     /**
      * Display a listing of the resource.
      *

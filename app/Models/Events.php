@@ -13,11 +13,6 @@ class Events extends Model
         'events' => 'array',
     ];
 
-    public function event()
-    {
-        return $this->belongsTo('Events');
-    }
-
     protected $fillable = [
         'codi',
         'data_inici',
