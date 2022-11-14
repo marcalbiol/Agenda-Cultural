@@ -14,6 +14,7 @@ class Events extends Model
     ];
 
     protected $fillable = [
+        'id',
         'codi',
         'data_inici',
         'data_fi',
@@ -27,6 +28,4 @@ class Events extends Model
         'telefon',
         'descripcio_html',
     ];
-
-
 }

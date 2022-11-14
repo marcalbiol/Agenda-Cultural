@@ -15,7 +15,7 @@ class EventsSeeder extends Seeder
      */
     public function run()
     {
-        $json = file_get_contents('https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$limit=50000', true);
+        $json = file_get_contents('https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$limit=500', true);
         $data = json_decode($json, false);
 
         foreach ($data as $event) {
