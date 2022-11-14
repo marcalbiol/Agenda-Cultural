@@ -27,7 +27,9 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Events::paginate(4);
+        $from = date('2020-01-01');
+        $to = date('2013-05-02');
+        $events = Events::WhereBetween('data_inici', [$from, $to])->get()->paginate(4);
         return $events;
     }
 
