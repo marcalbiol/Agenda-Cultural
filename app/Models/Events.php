@@ -13,6 +13,10 @@ class Events extends Model
         'events' => 'array',
     ];
 
+    private static $whiteListFilter = [
+        '*'
+    ];
+
     protected $fillable = [
         'id',
         'codi',
@@ -20,12 +24,13 @@ class Events extends Model
         'data_fi',
         'descripcio',
         'entrades',
+        'tags_categor_es',
+        'comarca_i_municipi',
         'horari',
         'imatges',
         'codi_postal',
-        'adreça',
-        'localitat',
-        'telefon',
+        'adre_a',
+        'tel_fon',
         'descripcio_html',
     ];
 }

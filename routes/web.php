@@ -19,3 +19,15 @@ Route::get('/', function () {
 });
 
 Route::get('/events', [EventsController::class, 'index']);
+
+/**
+ * filtra por categoria
+ * teatre, exposicions, concerts, fires-i-mercats
+ */
+Route::get('/events/category/{category}', [EventsController::class, 'eventsCategory']);
+
+/**
+ * filtra por municipio
+ * tarragona, lleida, girona, barcelona
+ */
+Route::get('/events/ubicacions/{ubicacio}', [EventsController::class, 'eventsMunicipi']);

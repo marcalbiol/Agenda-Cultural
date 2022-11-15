@@ -33,6 +33,20 @@ class EventsController extends Controller
         return $events;
     }
 
+    public function eventsCategory(string $categoria)
+    {
+
+        $event = Events::select('*')->where('tags_categor_es', '=', 'agenda:categories/' . $categoria)->get();
+        return compact('event');
+    }
+
+    public function eventsMunicipi(string $municipi)
+    {
+        $event = Events::select('*')->where('comarca_i_municipi', 'LIKE', 'agenda:ubicacions/' . $municipi . '%')->get();
+        return compact('event');
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
