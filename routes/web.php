@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/events', [EventsController::class, 'index']);
+Route::get('/events/{id}', [EventsController::class, 'show'])->name('index');
