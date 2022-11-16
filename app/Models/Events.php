@@ -13,10 +13,6 @@ class Events extends Model
         'events' => 'array',
     ];
 
-    private static $whiteListFilter = [
-        '*'
-    ];
-
     protected $fillable = [
         'id',
         'codi',

@@ -11,6 +11,8 @@ use Illuminate\View\View;
 class EventsController extends Controller
 {
 
+    //TODO filtrar por metodos al mismo tiempo, ej. año, categoria, ubicacion
+
     /**
      * Show the form for creating a new resource.
      *
@@ -24,18 +26,38 @@ class EventsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return array
      */
 
     public function index()
     {
-        /*
-        $from = date('2020-01-01');
-        $to = date('2013-05-02');
-        $events = Events::WhereBetween('data_inici', [$from, $to])->get()->paginate(4);
-        return $events;
-        */
+        //      return $events;
+
     }
+
+
+    public function eventsYear(int $year)
+    {
+
+        return Events::select('*')->where('data_inici', 'LIKE', $year . '%')
+            ->paginate(4);
+
+        //TODO handle errors en laravel?
+    }
+
+
+    /**
+     * @param int $id
+     * @return Events|Events[]|\LaravelIdea\Helper\App\Models\_IH_Events_C|null
+     * al hacer clic en un evento, se abrira un "modal" con información del evento
+     * y llamara a este metodo
+     */
+    public function eventsById(int $id)
+    {
+
+        return Events::find($id);
+    }
+
 
     public function eventsCategory(string $categoria)
     {

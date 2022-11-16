@@ -20,11 +20,22 @@ Route::get('/', function () {
 
 Route::get('/events', [EventsController::class, 'index']);
 
+
+// TODO cambiar nombre rutas
+Route::get('/events/id/{id}', [EventsController::class, 'eventsById']);
+
+
+/**
+ * muestra eventos de un año en especifico
+ *
+ */
+Route::get('events/nextYear/{year}', [EventsController::class, 'eventsYear']);
+
 /**
  * filtra por categoria
  * teatre, exposicions, concerts, fires-i-mercats
  */
-Route::get('/events/category/{category}', [EventsController::class, 'eventsCategory']);
+Route::get('/events/category/{categoria}', [EventsController::class, 'eventsCategory']);
 
 /**
  * filtra por municipio
