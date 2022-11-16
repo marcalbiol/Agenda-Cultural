@@ -6,6 +6,7 @@ use App\Http\Requests\StoreEventsRequest;
 use App\Http\Requests\UpdateEventsRequest;
 use App\Models\Events;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class EventsController extends Controller
 {
@@ -25,12 +26,15 @@ class EventsController extends Controller
      *
      * @return Response
      */
+
     public function index()
     {
+        /*
         $from = date('2020-01-01');
         $to = date('2013-05-02');
         $events = Events::WhereBetween('data_inici', [$from, $to])->get()->paginate(4);
         return $events;
+        */
     }
 
     public function eventsCategory(string $categoria)
@@ -62,12 +66,12 @@ class EventsController extends Controller
      * Display the specified resource.
      *
      * @param Events $events
-     * @return array
+     * @return view
      */
-    public function show(int $id): array
+    public function show(int $id): view
     {
         $event = Events::find($id);
-        return compact('event');
+        return view('index', compact('event'));
     }
 
 
