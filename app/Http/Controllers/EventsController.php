@@ -6,7 +6,9 @@ use App\Http\Requests\StoreEventsRequest;
 use App\Http\Requests\UpdateEventsRequest;
 use App\Models\Events;
 use Illuminate\Http\Response;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
+use LaravelIdea\Helper\App\Models\_IH_Events_C;
 
 class EventsController extends Controller
 {
@@ -26,52 +28,26 @@ class EventsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return array
+     * @return _IH_Events_C|Events[]|LengthAwarePaginator
      */
-
-    public function index()
+    public function index(string $where, string $value, string $orderBy, string $orderType)
     {
-        //      return $events;
-
+        $events = Events::where($where, "LIKE", $value . "%")
+            ->orderBy($orderBy, $orderType)
+            ->paginate(10);
+        return $events;
     }
-
-
-    public function eventsYear(int $year)
-    {
-
-        return Events::select('*')->where('data_inici', 'LIKE', $year . '%')
-            ->paginate(4);
-
-        //TODO handle errors en laravel?
-    }
-
 
     /**
-     * @param int $id
-     * @return Events|Events[]|\LaravelIdea\Helper\App\Models\_IH_Events_C|null
+     * @param Events $event
+     * @return Events|Events[]|_IH_Events_C|null
      * al hacer clic en un evento, se abrira un "modal" con información del evento
      * y llamara a este metodo
      */
-    public function eventsById(int $id)
+    public function getById(Events $event)
     {
-
-        return Events::find($id);
+        return $event;
     }
-
-
-    public function eventsCategory(string $categoria)
-    {
-
-        $event = Events::select('*')->where('tags_categor_es', '=', 'agenda:categories/' . $categoria)->get();
-        return compact('event');
-    }
-
-    public function eventsMunicipi(string $municipi)
-    {
-        $event = Events::select('*')->where('comarca_i_municipi', 'LIKE', 'agenda:ubicacions/' . $municipi . '%')->get();
-        return compact('event');
-    }
-
 
     /**
      * Store a newly created resource in storage.
