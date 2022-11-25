@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\EventsFilters;
 use App\Http\Requests\StoreEventsRequest;
 use App\Http\Requests\UpdateEventsRequest;
 use App\Models\Events;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Response;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 use LaravelIdea\Helper\App\Models\_IH_Events_C;
 
@@ -25,18 +27,54 @@ class EventsController extends Controller
 
     }
 
+    //TODO sitemap XML
+
     /**
      * Display a listing of the resource.
      *
-     * @return _IH_Events_C|Events[]|LengthAwarePaginator
+     * @return Application|Factory|\Illuminate\Contracts\View\View
      */
     public function index(string $where, string $value, string $orderBy, string $orderType)
     {
         $events = Events::where($where, "LIKE", $value . "%")
             ->orderBy($orderBy, $orderType)
             ->paginate(10);
-        return $events;
+        return view('welcome', compact('events', 'orderBy', 'orderType', 'where'));
+
     }
+
+
+    public function getEventName(string $eventName)
+    {
+        return Events::where(EventsFilters::DENOMINACI->value, '=', $eventName)->get();
+    }
+
+    /**
+     * @param string $eventName
+     * @param string $codi
+     * @return _IH_Events_C|Events[] un evento a partir del nombre del evento y codigo
+     */
+    public function getEventNameWithCodi(string $eventName, string $codi)
+    {
+        return Events::where([
+            [EventsFilters::DENOMINACI->value, '=', $eventName],
+            [EventsFilters::CODI->value, '=', $codi]
+        ])->get();
+        //TODO ordenar por categoria y ciudad
+    }
+
+    public function eventsCategory(string $categoria)
+    {
+        $event = Events::select('*')->where(EventsFilters::TAGS_CATEGO_ES->value, '=', 'agenda:categories/' . $categoria)->get();
+        return compact('event');
+    }
+
+    public function getEventsFromProvince(string $municipi)
+    {
+        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $municipi . '%')->get();
+        //TODO oredenar por fecha inicio y no q no hayan terminado
+    }
+
 
     /**
      * @param Events $event
