@@ -97,7 +97,7 @@ class EventsController extends Controller
             ->limit(10)
             ->get();
 
-        return view('components.template.calendar', $events);
+        return view('components.template.calendar', ['events' => $events ]);
 
 
 
