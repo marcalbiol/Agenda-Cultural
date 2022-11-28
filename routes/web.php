@@ -42,5 +42,5 @@ Route::get('events/provincia/{provinceName}/{category}', [EventsController::clas
 
 Route::get('/events/{event}', [EventsController::class, 'show']);
 
-Route::get('/generate-sitemap', [EventsController::class, 'generateSitemap']);
+Route::get('/events/generate-sitemap', [EventsController::class, 'generateSitemap']);
 
