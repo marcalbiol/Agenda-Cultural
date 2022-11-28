@@ -82,4 +82,16 @@ class EventsController extends Controller
         $output .= "</urlset>";
         return $output;
     }
+
+    /**
+     * @return Events[]
+     */
+    public function getRandomEvents() {
+
+        $events = Events::inRandomOrder()
+            ->limit(10)
+            ->get();
+
+        return $events;
+    }
 }
