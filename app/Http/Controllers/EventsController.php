@@ -27,16 +27,30 @@ class EventsController extends Controller
      */
     public function getEventNameWithCodi(string $eventName, string $codi)
     {
-        return Events::where([
+        function getRandomEvents()
+        {
+            $eventsList = Events::inRandomOrder()
+            ->limit(5)
+            ->orderBy(EventsFilters::TAGS_CATEGO_ES->value)
+            ->orderBy(EventsFilters::COMARCA_I_MUNICIPI->value)
+            ->get();
+             
+            return $eventsList;
+        }
+
+        $event = Events::where([
             [EventsFilters::DENOMINACI->value, '=', $eventName],
-            [EventsFilters::CODI->value, '=', $codi]
+            [EventsFilters::CODI->value, '=', $codi],
         ])->get();
 
-        //TODO otro metodo para mostrar un carrousel de eventos aleatorios ordenados
-        // por categoria y ciudad
+        $randomEvents = getRandomEvents();
 
-        // metodo privado
+        $eventAndRandomEvents = array(
+            $event,
+            $randomEvents
+        );
 
+        return $eventAndRandomEvents;
     }
 
     public function getEventsFromProvince(string $municipi)

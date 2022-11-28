@@ -24,12 +24,14 @@ Route::get('/', function () {
 });
 
 /**
- *  eventName = denominaci
- * eventCodi = codi
+ *  eventName = Akelarre
+ * eventCodi = 20210127004
  */
-Route::get('events/{eventName}/{eventCodi}', [EventsController::class, 'getEventNameWithCodi']);
+Route::get('events/name/{eventName}/codi/{eventCodi}', [EventsController::class, 'getEventNameWithCodi']);
 
 Route::get('events/nameEvent/{nameEvent}', [EventsController::class, 'getEventName']);
+
+Route::get('/joel', [EventsController::class, 'getRandomEvents']);
 
 /**
  * Llistat de tots els events que es facin
