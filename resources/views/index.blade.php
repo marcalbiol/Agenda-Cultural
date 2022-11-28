@@ -9,7 +9,7 @@
 <body>
 <header>
     <!-- Navbar -->
-@include('navuser')
+    @include('components.template.navuser')
 
 </header>
 <h1 class="text-5xl">Hello World</h1>

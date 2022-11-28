@@ -19,17 +19,19 @@ use Illuminate\Support\Facades\Route;
 // contains the "web" middleware group. Now create something great!
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 /**
- *  eventName = denominaci
- * eventCodi = codi
+ *  eventName = Akelarre
+ * eventCodi = 20210127004
  */
-Route::get('events/{eventName}/{eventCodi}', [EventsController::class, 'getEventNameWithCodi']);
+Route::get('events/name/{eventName}/codi/{eventCodi}', [EventsController::class, 'getEventNameWithCodi']);
 
 Route::get('events/nameEvent/{nameEvent}', [EventsController::class, 'getEventName']);
+
+Route::get('/', [EventsController::class, 'getRandomEvents']);
 
 /**
  * Llistat de tots els events que es facin
