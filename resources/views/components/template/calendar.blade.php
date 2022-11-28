@@ -1,74 +1,100 @@
-<section class="ftco-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center mb-5">
-                <h2 class="heading-section">Que Fer</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="content w-100">
-                    <div class="calendar-container">
-                        <div class="calendar">
-                            <div class="year-header">
-                                <span class="left-button fa fa-chevron-left" id="prev"> </span>
-                                <span class="year" id="label"></span>
-                                <span class="right-button fa fa-chevron-right" id="next"> </span>
-                            </div>
-                            <table class="months-table w-100">
-                                <tbody>
-                                <tr class="months-row">
-                                    <td class="month">Jan</td>
-                                    <td class="month">Feb</td>
-                                    <td class="month">Mar</td>
-                                    <td class="month">Apr</td>
-                                    <td class="month">May</td>
-                                    <td class="month">Jun</td>
-                                    <td class="month">Jul</td>
-                                    <td class="month">Aug</td>
-                                    <td class="month">Sep</td>
-                                    <td class="month">Oct</td>
-                                    <td class="month">Nov</td>
-                                    <td class="month">Dec</td>
-                                </tr>
-                                </tbody>
-                            </table>
 
-                            <table class="days-table w-100">
-                                <td class="day">Sun</td>
-                                <td class="day">Mon</td>
-                                <td class="day">Tue</td>
-                                <td class="day">Wed</td>
-                                <td class="day">Thu</td>
-                                <td class="day">Fri</td>
-                                <td class="day">Sat</td>
-                            </table>
-                            <div class="frame">
-                                <table class="dates-table w-100">
-                                    <tbody class="tbody">
-                                    </tbody>
-                                </table>
-                            </div>
+<x-template.navuser/>
+<style>
+    section {
+        margin: 5rem 5% 0 5%;
+        background-color: transparent !important;
+    }</style>
 
-                        </div>
-                    </div>
-                    <div class="events-container">
-                    </div>
-                    <div class="dialog" id="dialog">
-                        <h2 class="dialog-header"> Add New Event </h2>
-                        <form class="form" id="form">
-                            <div class="form-container" align="center">
-                                <label class="form-label" id="valueFromMyButton" for="name">Event name</label>
-                                <input class="input" type="text" id="name" maxlength="36">
-                                <label class="form-label" id="valueFromMyButton" for="count">Number of people to invite</label>
-                                <input class="input" type="number" id="count" min="0" max="1000000" maxlength="7">
-                                <input type="button" value="Cancel" class="button" id="cancel-button">
-                                <input type="button" value="OK" class="button button-white" id="ok-button">
-                            </div>
-                        </form>
-                    </div>
+<section class="light">
+    <div class="container py-2">
+        <article class="postcard light blue">
+            <a class="postcard__img_link" href="#">
+                <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="Image Title" />
+            </a>
+            <div class="postcard__text t-dark">
+                <h1 class="postcard__title blue"><a href="#">Evento Title</a></h1>
+                <div class="postcard__subtitle small">
+                    <time datetime="2020-05-25 12:00:00">
+                        <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+                    </time>
                 </div>
+                <div class="postcard__bar"></div>
+                <div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
+                <ul class="postcard__tagbox">
+                    <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+                    <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+                    <li class="tag__item play blue">
+                        <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </article>
+        <article class="postcard light red">
+            <a class="postcard__img_link" href="#">
+                <img class="postcard__img" src="https://picsum.photos/501/500" alt="Image Title" />
+            </a>
+            <div class="postcard__text t-dark">
+                <h1 class="postcard__title red"><a href="#">Podcast Title</a></h1>
+                <div class="postcard__subtitle small">
+                    <time datetime="2020-05-25 12:00:00">
+                        <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+                    </time>
+                </div>
+                <div class="postcard__bar"></div>
+                <div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
+                <ul class="postcard__tagbox">
+                    <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+                    <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+                    <li class="tag__item play red">
+                        <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <article class="postcard light green">
+            <a class="postcard__img_link" href="#">
+                <img class="postcard__img" src="https://picsum.photos/500/501" alt="Image Title" />
+            </a>
+            <div class="postcard__text t-dark">
+                <h1 class="postcard__title green"><a href="#">Podcast Title</a></h1>
+                <div class="postcard__subtitle small">
+                    <time datetime="2020-05-25 12:00:00">
+                        <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+                    </time>
+                </div>
+                <div class="postcard__bar"></div>
+                <div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
+                <ul class="postcard__tagbox">
+                    <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+                    <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+                    <li class="tag__item play green">
+                        <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <article class="postcard light yellow">
+            <a class="postcard__img_link" href="#">
+                <img class="postcard__img" src="https://picsum.photos/501/501" alt="Image Title" />
+            </a>
+            <div class="postcard__text t-dark">
+                <h1 class="postcard__title yellow"><a href="#">Podcast Title</a></h1>
+                <div class="postcard__subtitle small">
+                    <time datetime="2020-05-25 12:00:00">
+                        <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+                    </time>
+                </div>
+                <div class="postcard__bar"></div>
+                <div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
+                <ul class="postcard__tagbox">
+                    <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+                    <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+                    <li class="tag__item play yellow">
+                        <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+                    </li>
+                </ul>
+            </div>
+        </article>
     </div>
 </section>
