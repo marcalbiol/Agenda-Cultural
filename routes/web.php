@@ -24,21 +24,30 @@ Route::get('/', function () {
 });
 
 /**
- *  eventName = denominaci
- * eventCodi = codi
+ * eventName = denominaci
+ * eventCodi = 20210120034
  */
-Route::get('events/{eventName}/{eventCodi}', [EventsController::class, 'getEventNameWithCodi']);
+Route::get('events/name/{eventName}/codi/{eventCodi}', [EventsController::class, 'getEventNameWithCodi']);
 
-Route::get('events/{nameEvent}', [EventsController::class, 'getEventName']);
+/**
+ * eventos por categoria
+ */
+Route::get('events/category/ambit/{categoryName}', [EventsController::class, 'getEventsFromCategory']);
 
 /**
  * Llistat de tots els events que es facin
  * a la província ordenats per data d’inici.
  * No es mostren els esdeveniments finalitzats.
  */
-Route::get('events/provincia/{provinceName}', [EventsController::class, 'getEventsFromProvince']);
+Route::get('events/provincia/from/{provinceName}', [EventsController::class, 'getEventsFromProvince']);
 
-Route::get('events/provincia/{provinceName}/{category}', [EventsController::class, '']);
+Route::get('events/name/{nameEvent}', [EventsController::class, 'getEventName']);
+
+/**
+ * http://127.0.0.1:8000/events/provincia/tarragona/categoria/teatre
+ * permite buscar evento por provincia y categoria
+ */
+Route::get('events/provincia/{provinceName}/categoria/{categoryName}', [EventsController::class, 'getEventsFromProvinceAndCategory']);
 
 Route::get('/events/{event}', [EventsController::class, 'show']);
 

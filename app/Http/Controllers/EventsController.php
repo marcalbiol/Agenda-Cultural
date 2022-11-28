@@ -14,6 +14,7 @@ class EventsController extends Controller
     /**
      * @param string $eventName
      * @return Events[]|_IH_Events_C devuelve un evento por su nombre
+     * el formulario llamara a este metodo
      */
     public function getEventName(string $eventName)
     {
@@ -31,20 +32,32 @@ class EventsController extends Controller
             [EventsFilters::DENOMINACI->value, '=', $eventName],
             [EventsFilters::CODI->value, '=', $codi]
         ])->get();
-
-        //TODO otro metodo para mostrar un carrousel de eventos aleatorios ordenados
-        // por categoria y ciudad
-
-        // metodo privado
-
     }
 
-    public function getEventsFromProvince(string $municipi)
+    /**
+     * @param string $province
+     * @return Events[]|_IH_Events_C
+     * el formulario llamara a este metodo
+     */
+    public function getEventsFromProvince(string $province)
     {
-        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $municipi . '%')->get();
-        //TODO oredenar por fecha inicio y no q no hayan terminado
+        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $province . '%')
+            ->where(EventsFilters::DATA_FI->value, '>', '2022')
+            ->orderBy(EventsFilters::DATA_INICI->value, 'asc')
+            ->get();
     }
 
+    public function getEventsFromCategory(string $category)
+    {
+        return Events::where(EventsFilters::TAGS_CATEGOR_ES->value, 'LIKE', 'agenda:categories/' . $category . '%')->get();
+    }
+
+    public function getEventsFromProvinceAndCategory(string $province, string $category)
+    {
+        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $province . '%')
+            ->where(EventsFilters::TAGS_CATEGOR_ES->value, 'LIKE', 'agenda:categories/' . $category . '%')->get();
+
+    }
 
     /**
      * @param Events $event

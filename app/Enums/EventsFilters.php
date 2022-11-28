@@ -10,6 +10,6 @@ enum EventsFilters: string
     case DATA_INICI = 'data_inici';
     case DATA_FI = 'data_fi';
     case COMARCA_I_MUNICIPI = "comarca_i_municipi";
-    case TAGS_CATEGO_ES = "tags_categor_es";
+    case TAGS_CATEGOR_ES = "tags_categor_es";
 }
 
