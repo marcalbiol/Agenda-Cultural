@@ -44,5 +44,7 @@ Route::get('events/provincia/{provinceName}/{category}', [EventsController::clas
 
 Route::get('/events/{event}', [EventsController::class, 'show']);
 
+Route::get('/events/date/{year}/{month}', [EventsController::class, 'getByDate']);
+
 Route::get('/events/generate-sitemap', [EventsController::class, 'generateSitemap']);
 

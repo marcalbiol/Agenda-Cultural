@@ -71,6 +71,10 @@ class EventsController extends Controller
         return $event;
     }
 
+    public function getByDate($year, $month) {
+        return Events::where('data_inici', 'LIKE', $year . '-' .$month . '%')->get();
+    }
+
     public function generateSitemap()
     {
         $events = Events::all();
