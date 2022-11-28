@@ -56,4 +56,16 @@ class EventsController extends Controller
     {
         return $event;
     }
+
+    public function generateSitemap()
+    {
+        $events = Events::all();
+        $output = '<?xml version="1.0" encoding="UTF-8"?>';
+        $output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+        foreach ($events as $event) {
+            $output .= "<url><loc>http://www.quefer.cat/events/" . $event->id . "</loc></url>";
+        }
+        $output .= "</urlset>";
+        return $output;
+    }
 }
