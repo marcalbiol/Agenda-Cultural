@@ -15,8 +15,8 @@ return new class extends Migration {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('codi')->nullable();
-            $table->text('data_fi')->nullable();
-            $table->text('data_inici')->nullable();
+            $table->dateTime('data_fi')->nullable();
+            $table->dateTime('data_inici')->nullable();
             $table->text('denominaci')->nullable();
             $table->text('descripcio')->nullable();
             $table->text('entrades')->nullable();
