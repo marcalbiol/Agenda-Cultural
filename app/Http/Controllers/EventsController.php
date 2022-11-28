@@ -3,13 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\EventsFilters;
-use App\Http\Requests\StoreEventsRequest;
-use App\Http\Requests\UpdateEventsRequest;
 use App\Models\Events;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\Response;
-use Illuminate\View\View;
 use LaravelIdea\Helper\App\Models\_IH_Events_C;
 
 class EventsController extends Controller
@@ -18,32 +12,9 @@ class EventsController extends Controller
     //TODO filtrar por metodos al mismo tiempo, ej. año, categoria, ubicacion
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
+     * @param string $eventName
+     * @return Events[]|_IH_Events_C devuelve un evento por su nombre
      */
-    public static function create()
-    {
-
-    }
-
-    //TODO sitemap XML
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Application|Factory|\Illuminate\Contracts\View\View
-     */
-    public function index(string $where, string $value, string $orderBy, string $orderType)
-    {
-        $events = Events::where($where, "LIKE", $value . "%")
-            ->orderBy($orderBy, $orderType)
-            ->paginate(10);
-        return view('welcome', compact('events', 'orderBy', 'orderType', 'where'));
-
-    }
-
-
     public function getEventName(string $eventName)
     {
         return Events::where(EventsFilters::DENOMINACI->value, '=', $eventName)->get();
@@ -60,13 +31,12 @@ class EventsController extends Controller
             [EventsFilters::DENOMINACI->value, '=', $eventName],
             [EventsFilters::CODI->value, '=', $codi]
         ])->get();
-        //TODO ordenar por categoria y ciudad
-    }
 
-    public function eventsCategory(string $categoria)
-    {
-        $event = Events::select('*')->where(EventsFilters::TAGS_CATEGO_ES->value, '=', 'agenda:categories/' . $categoria)->get();
-        return compact('event');
+        //TODO otro metodo para mostrar un carrousel de eventos aleatorios ordenados
+        // por categoria y ciudad
+
+        // metodo privado
+
     }
 
     public function getEventsFromProvince(string $municipi)
@@ -82,66 +52,8 @@ class EventsController extends Controller
      * al hacer clic en un evento, se abrira un "modal" con información del evento
      * y llamara a este metodo
      */
-    public function getById(Events $event)
+    public function show(Events $event)
     {
         return $event;
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param StoreEventsRequest $request
-     * @return Response
-     */
-    public function store(StoreEventsRequest $request)
-    {
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Events $events
-     * @return view
-     */
-    public function show(int $id): view
-    {
-        $event = Events::find($id);
-        return view('index', compact('event'));
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Events $events
-     * @return Response
-     */
-    public function edit(Events $events)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param UpdateEventsRequest $request
-     * @param Events $events
-     * @return Response
-     */
-    public function update(UpdateEventsRequest $request, Events $events)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Events $events
-     * @return Response
-     */
-    public function destroy(Events $events)
-    {
-        //
     }
 }
