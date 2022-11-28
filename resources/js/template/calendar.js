@@ -1,9 +1,9 @@
-(function($) {
+(function ($) {
 
     "use strict";
 
     // Setup the calendar with the current date
-    $(document).ready(function(){
+    $(document).ready(function () {
         var date = new Date();
         var today = date.getDate();
         // Set click handlers for DOM elements
@@ -14,7 +14,7 @@
         // Set current month as active
         $(".months-row").children().eq(date.getMonth()).addClass("active-month");
         init_calendar(date);
-        var events = check_events(today, date.getMonth()+1, date.getFullYear());
+        var events = check_events(today, date.getMonth() + 1, date.getFullYear());
         show_events(events, months[date.getMonth()], today);
     });
 
@@ -33,33 +33,32 @@
         var first_day = date.getDay();
         // 35+firstDay is the number of date elements to be added to the dates table
         // 35 is from (7 days in a week) * (up to 5 rows of dates in a month)
-        for(var i=0; i<35+first_day; i++) {
+        for (var i = 0; i < 35 + first_day; i++) {
             // Since some of the elements will be blank,
             // need to calculate actual date from index
-            var day = i-first_day+1;
+            var day = i - first_day + 1;
             // If it is a sunday, make a new row
-            if(i%7===0) {
+            if (i % 7 === 0) {
                 calendar_days.append(row);
                 row = $("<tr class='table-row'></tr>");
             }
             // if current index isn't a day in this month, make it blank
-            if(i < first_day || day > day_count) {
-                var curr_date = $("<td class='table-date nil'>"+"</td>");
+            if (i < first_day || day > day_count) {
+                var curr_date = $("<td class='table-date nil'>" + "</td>");
                 row.append(curr_date);
-            }
-            else {
-                var curr_date = $("<td class='table-date'>"+day+"</td>");
-                var events = check_events(day, month+1, year);
-                if(today===day && $(".active-date").length===0) {
+            } else {
+                var curr_date = $("<td class='table-date'>" + day + "</td>");
+                var events = check_events(day, month + 1, year);
+                if (today === day && $(".active-date").length === 0) {
                     curr_date.addClass("active-date");
                     show_events(events, months[month], day);
                 }
                 // If this date has any events, style it with .event-date
-                if(events.length!==0) {
+                if (events.length !== 0) {
                     curr_date.addClass("event-date");
                 }
                 // Set onClick handler for clicking a date
-                curr_date.click({events: events, month: months[month], day:day}, date_click);
+                curr_date.click({events: events, month: months[month], day: day}, date_click);
                 row.append(curr_date);
             }
         }
@@ -100,7 +99,7 @@
     function next_year(event) {
         $("#dialog").hide(250);
         var date = event.data.date;
-        var new_year = date.getFullYear()+1;
+        var new_year = date.getFullYear() + 1;
         $("year").html(new_year);
         date.setFullYear(new_year);
         init_calendar(date);
@@ -110,7 +109,7 @@
     function prev_year(event) {
         $("#dialog").hide(250);
         var date = event.data.date;
-        var new_year = date.getFullYear()-1;
+        var new_year = date.getFullYear() - 1;
         $("year").html(new_year);
         date.setFullYear(new_year);
         init_calendar(date);
@@ -119,10 +118,10 @@
 // Event handler for clicking the new event button
     function new_event(event) {
         // if a date isn't selected then do nothing
-        if($(".active-date").length===0)
+        if ($(".active-date").length === 0)
             return;
         // remove red error input on click
-        $("input").click(function(){
+        $("input").click(function () {
             $(this).removeClass("error-input");
         })
         // empty inputs and hide events
@@ -131,7 +130,7 @@
         $(".events-container").hide(250);
         $("#dialog").show(250);
         // Event handler for cancel button
-        $("#cancel-button").click(function() {
+        $("#cancel-button").click(function () {
             $("#name").removeClass("error-input");
             $("#count").removeClass("error-input");
             $("#dialog").hide(250);
@@ -146,7 +145,7 @@
             "occasion": name,
             "invited_count": count,
             "year": date.getFullYear(),
-            "month": date.getMonth()+1,
+            "month": date.getMonth() + 1,
             "day": day
         };
         event_data["events"].push(event);
@@ -159,20 +158,19 @@
         $(".events-container").show(250);
         console.log(event_data["events"]);
         // If there are no events for this date, notify the user
-        if(events.length===0) {
+        if (events.length === 0) {
             var event_card = $("<div class='event-card'></div>");
-            var event_name = $("<div class='event-name'>There are no events planned for "+month+" "+day+".</div>");
-            $(event_card).css({ "border-left": "10px solid #FF1744" });
+            var event_name = $("<div class='event-name'>There are no events planned for " + month + " " + day + ".</div>");
+            $(event_card).css({"border-left": "10px solid #FF1744"});
             $(event_card).append(event_name);
             $(".events-container").append(event_card);
-        }
-        else {
+        } else {
             // Go through and add each event as a card to the events container
-            for(var i=0; i<events.length; i++) {
+            for (var i = 0; i < events.length; i++) {
                 var event_card = $("<div class='event-card'></div>");
-                var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
-                var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+" Invited</div>");
-                if(events[i]["cancelled"]===true) {
+                var event_name = $("<div class='event-name'>" + events[i]["occasion"] + ":</div>");
+                var event_count = $("<div class='event-count'>" + events[i]["invited_count"] + " Invited</div>");
+                if (events[i]["cancelled"] === true) {
                     $(event_card).css({
                         "border-left": "10px solid #FF1744"
                     });
@@ -187,11 +185,11 @@
 // Checks if a specific date has any events
     function check_events(day, month, year) {
         var events = [];
-        for(var i=0; i<event_data["events"].length; i++) {
+        for (var i = 0; i < event_data["events"].length; i++) {
             var event = event_data["events"][i];
-            if(event["day"]===day &&
-                event["month"]===month &&
-                event["year"]===year) {
+            if (event["day"] === day &&
+                event["month"] === month &&
+                event["year"] === year) {
                 events.push(event);
             }
         }
