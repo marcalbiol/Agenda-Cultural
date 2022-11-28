@@ -18,7 +18,7 @@
                 <h1 class="postcard__title blue"><a href="#">{{$event->denominaci}}</a></h1>
                 <div class="postcard__subtitle small">
                     <time datetime="2020-05-25 12:00:00">
-                        <i class="fas fa-calendar-alt mr-2"></i>{{$event->data_inici->format('Y-m-d')}} | {{$event->data_fi->format('Y-m-d')}}
+                        <i class="fas fa-calendar-alt mr-2"></i>{{$event->data_inici}} | {{$event->data_fi}}
                     </time>
                 </div>
                 <div class="postcard__bar"></div>
