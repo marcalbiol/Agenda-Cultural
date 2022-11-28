@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\EventsFilters;
 use App\Models\Events;
+use Illuminate\View\View;
 use LaravelIdea\Helper\App\Models\_IH_Events_C;
 
 class EventsController extends Controller
@@ -34,7 +35,7 @@ class EventsController extends Controller
             ->orderBy(EventsFilters::TAGS_CATEGO_ES->value)
             ->orderBy(EventsFilters::COMARCA_I_MUNICIPI->value)
             ->get();
-             
+
             return $eventsList;
         }
 
@@ -96,6 +97,9 @@ class EventsController extends Controller
             ->limit(10)
             ->get();
 
-        return $events;
+        return view('components.template.calendar', $events);
+
+
+
     }
 }

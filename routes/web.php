@@ -47,4 +47,3 @@ Route::get('/events/{event}', [EventsController::class, 'show']);
 Route::get('/events/date/{year}/{month}', [EventsController::class, 'getByDate']);
 
 Route::get('/events/generate-sitemap', [EventsController::class, 'generateSitemap']);
-
