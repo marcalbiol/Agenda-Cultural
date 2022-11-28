@@ -16,8 +16,7 @@ body {
     background: #f3f5f7;
 }
 
-a,
-a:hover {
+a, a:hover {
     text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
@@ -52,8 +51,7 @@ a:hover {
 .postcard a {
     color: inherit;
 }
-.postcard h1,
-.postcard .h1 {
+.postcard h1, .postcard .h1 {
     margin-bottom: 0.5rem;
     font-weight: 500;
     line-height: 1.2;
