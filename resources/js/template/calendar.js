@@ -153,8 +153,6 @@
 
 // Display all events of the selected date in card views
     function show_events(events, month, day) {
-
-
         // Clear the dates container
         $(".events-container").empty();
         $(".events-container").show(250);
@@ -162,7 +160,7 @@
         // If there are no events for this date, notify the user
         if (events.length === 0) {
             var event_card = $("<div class='event-card'></div>");
-            var event_name = $("<div class='event-name'> " + month + " " + day + ".</div>");
+            var event_name = $("<div class='event-name'>There are no events planned for " + month + " " + day + ".</div>");
             $(event_card).css({"border-left": "10px solid #FF1744"});
             $(event_card).append(event_name);
             $(".events-container").append(event_card);
@@ -204,91 +202,102 @@
             {
                 "occasion": " Repeated Test Event ",
                 "invited_count": 120,
-                "year": 2022,
-                "month": 11,
+                "year": 2020,
+                "month": 5,
                 "day": 10,
-                "cancelled": false
+                "cancelled": true
             },
             {
                 "occasion": " Repeated Test Event ",
                 "invited_count": 120,
-                "year": 2022,
-                "month": 11,
+                "year": 2020,
+                "month": 5,
                 "day": 10,
-                "cancelled": false
+                "cancelled": true
             },
             {
                 "occasion": " Repeated Test Event ",
                 "invited_count": 120,
-                "year": 2022,
-                "month": 11,
+                "year": 2020,
+                "month": 5,
                 "day": 10,
-                "cancelled": false
+                "cancelled": true
             },
             {
                 "occasion": " Repeated Test Event ",
                 "invited_count": 120,
-                "year": 2022,
-                "month": 11,
-                "day": 10,
-                "cancelled": false
+                "year": 2020,
+                "month": 5,
+                "day": 10
             },
             {
                 "occasion": " Repeated Test Event ",
                 "invited_count": 120,
-                "year": 2022,
-                "month": 11,
+                "year": 2020,
+                "month": 5,
                 "day": 10,
-                "cancelled": false
+                "cancelled": true
             },
             {
                 "occasion": " Repeated Test Event ",
                 "invited_count": 120,
-                "year": 2022,
-                "month": 11,
-                "day": 10,
-                "cancelled": false
+                "year": 2020,
+                "month": 5,
+                "day": 10
             },
             {
                 "occasion": " Repeated Test Event ",
                 "invited_count": 120,
-                "year": 2022,
-                "month": 11,
+                "year": 2020,
+                "month": 5,
                 "day": 10,
-                "cancelled": false
+                "cancelled": true
             },
             {
                 "occasion": " Repeated Test Event ",
                 "invited_count": 120,
-                "year": 2022,
-                "month": 11,
-                "day": 11,
-                "cancelled": false
+                "year": 2020,
+                "month": 5,
+                "day": 10
             },
             {
                 "occasion": " Repeated Test Event ",
                 "invited_count": 120,
-                "year": 2022,
-                "month": 12,
+                "year": 2020,
+                "month": 5,
                 "day": 10,
-                "cancelled": false
+                "cancelled": true
+            },
+            {
+                "occasion": " Repeated Test Event ",
+                "invited_count": 120,
+                "year": 2020,
+                "month": 5,
+                "day": 10
+            },
+            {
+                "occasion": " Test Event",
+                "invited_count": 120,
+                "year": 2020,
+                "month": 5,
+                "day": 11
             }
-            ]
+        ]
     };
 
     const months = [
-        "Enero",
-        "Febrero",
-        "Marzo",
-        "Abril",
-        "Mayo",
-        "Junio",
-        "Julio",
-        "Agosto",
-        "Septiembre",
-        "Octubre",
-        "Noviembre",
-        "Diciembre"
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
     ];
 
 })(jQuery);
