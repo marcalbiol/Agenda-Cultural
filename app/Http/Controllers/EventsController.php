@@ -98,4 +98,8 @@ class EventsController extends Controller
 
         return view('welcome', ['events' => $events ]);
     }
+
+
+    //
+
 }
