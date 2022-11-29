@@ -92,14 +92,10 @@ class EventsController extends Controller
      * @return Events[]
      */
     public function getRandomEvents() {
-
         $events = Events::inRandomOrder()
             ->limit(10)
             ->get();
 
-        return view('components.template.calendar', ['events' => $events ]);
-
-
-
+        return view('welcome', ['events' => $events ]);
     }
 }

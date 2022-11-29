@@ -24,9 +24,9 @@
 </head>
 <body>
 
+<x-template.navuser/>
 
-<x-template.calendar/>
-
+<x-template.calendar :events="$events"/>
 
 </body>
 </html>

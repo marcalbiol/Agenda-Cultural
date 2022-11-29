@@ -6,14 +6,17 @@ use Illuminate\View\Component;
 
 class Calendar extends Component
 {
+
+    public $events;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($events)
     {
-        //
+        $this->events = $events;
     }
 
     /**
