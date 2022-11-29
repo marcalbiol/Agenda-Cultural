@@ -24,6 +24,8 @@
 
 <x-template.navuser/>
 
+<x-template.filter/>
+
 <x-template.calendar :events="$events"/>
 
 </body>
