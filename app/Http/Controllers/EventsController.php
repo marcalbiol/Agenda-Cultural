@@ -28,10 +28,30 @@ class EventsController extends Controller
      */
     public function getEventNameWithCodi(string $eventName, string $codi)
     {
-        return Events::where([
+        function getRandomEvents()
+        {
+            $eventsList = Events::inRandomOrder()
+                ->limit(5)
+                ->orderBy(EventsFilters::TAGS_CATEGOR_ES->value)
+                ->orderBy(EventsFilters::COMARCA_I_MUNICIPI->value)
+                ->get();
+
+            return $eventsList;
+        }
+
+        $event = Events::where([
             [EventsFilters::DENOMINACI->value, '=', $eventName],
-            [EventsFilters::CODI->value, '=', $codi]
+            [EventsFilters::CODI->value, '=', $codi],
         ])->get();
+
+        $randomEvents = getRandomEvents();
+
+        $eventAndRandomEvents = array(
+            $event,
+            $randomEvents
+        );
+
+        return $eventAndRandomEvents;
     }
 
     /**
@@ -68,5 +88,21 @@ class EventsController extends Controller
     public function show(Events $event)
     {
         return $event;
+    }
+
+    public function getByDate($year, $month) {
+        return Events::where('data_inici', 'LIKE', $year . '-' .$month . '%')->get();
+    }
+
+    public function generateSitemap()
+    {
+        $events = Events::all();
+        $output = '<?xml version="1.0" encoding="UTF-8"?>';
+        $output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+        foreach ($events as $event) {
+            $output .= "<url><loc>http://www.quefer.cat/events/" . $event->id . "</loc></url>";
+        }
+        $output .= "</urlset>";
+        return $output;
     }
 }

@@ -33,6 +33,7 @@ Route::get('events/name/{eventName}/codi/{eventCodi}', [EventsController::class,
  * eventos por categoria
  */
 Route::get('events/category/ambit/{categoryName}', [EventsController::class, 'getEventsFromCategory']);
+Route::get('events/nameEvent/{nameEvent}', [EventsController::class, 'getEventName']);
 
 /**
  * Llistat de tots els events que es facin
@@ -50,4 +51,8 @@ Route::get('events/name/{nameEvent}', [EventsController::class, 'getEventName'])
 Route::get('events/provincia/{provinceName}/categoria/{categoryName}', [EventsController::class, 'getEventsFromProvinceAndCategory']);
 
 Route::get('/events/{event}', [EventsController::class, 'show']);
+
+Route::get('/events/date/{year}/{month}', [EventsController::class, 'getByDate']);
+
+Route::get('/events/generate-sitemap', [EventsController::class, 'generateSitemap']);
 
