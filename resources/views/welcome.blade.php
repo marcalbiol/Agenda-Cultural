@@ -18,9 +18,7 @@
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
 
-    @vite(['resources/css/app.css','resources/css/template/calendar.css','resources/js/template/calendar.js']);
-
-
+    @vite(['resources/css/app.css']);
 </head>
 <body>
 

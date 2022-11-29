@@ -1,3 +1,5 @@
+@vite(['resources/css/template/calendar.css','resources/js/template/calendar.js']);
+
 <style>
     section {
         margin: 5rem 5% 0 5%;
