@@ -1,1080 +1,953 @@
+
 <style>
-    html {
-        line-height: 1.15;
-        /* 1 */
-        -ms-text-size-adjust: 100%;
-        /* 2 */
-        -webkit-text-size-adjust: 100%;
-        /* 2 */
-    }
 
-    /* Sections
+    /* ==========================================================================
+       #GRID
        ========================================================================== */
-    /**
-     * Remove the margin in all browsers (opinionated).
-     */
-    body {
-        margin: 0;
-    }
-
-    /**
-     * Add the correct display in IE 9-.
-     */
-    article,
-    aside,
-    footer,
-    header,
-    nav,
-    section {
-        display: block;
-        background-color: red;
-    }
-
-    /**
-     * Correct the font size and margin on `h1` elements within `section` and
-     * `article` contexts in Chrome, Firefox, and Safari.
-     */
-    h1 {
-        font-size: 2em;
-        margin: 0.67em 0;
-    }
-
-    /* Grouping content
-       ========================================================================== */
-    /**
-     * Add the correct display in IE 9-.
-     * 1. Add the correct display in IE.
-     */
-    figcaption,
-    figure,
-    main {
-        /* 1 */
-        display: block;
-    }
-
-    /**
-     * Add the correct margin in IE 8.
-     */
-    figure {
-        margin: 1em 40px;
-    }
-
-    /**
-     * 1. Add the correct box sizing in Firefox.
-     * 2. Show the overflow in Edge and IE.
-     */
-    hr {
-        box-sizing: content-box;
-        /* 1 */
-        height: 0;
-        /* 1 */
-        overflow: visible;
-        /* 2 */
-    }
-
-    /**
-     * 1. Correct the inheritance and scaling of font size in all browsers.
-     * 2. Correct the odd `em` font sizing in all browsers.
-     */
-    pre {
-        font-family: monospace, monospace;
-        /* 1 */
-        font-size: 1em;
-        /* 2 */
-    }
-
-    /* Text-level semantics
-       ========================================================================== */
-    /**
-     * 1. Remove the gray background on active links in IE 10.
-     * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
-     */
-    a {
-        background-color: transparent;
-        /* 1 */
-        -webkit-text-decoration-skip: objects;
-        /* 2 */
-    }
-
-    /**
-     * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
-     * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
-     */
-    abbr[title] {
-        border-bottom: none;
-        /* 1 */
-        text-decoration: underline;
-        /* 2 */
-        text-decoration: underline dotted;
-        /* 2 */
-    }
-
-    /**
-     * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
-     */
-    b,
-    strong {
-        font-weight: inherit;
-    }
-
-    /**
-     * Add the correct font weight in Chrome, Edge, and Safari.
-     */
-    b,
-    strong {
-        font-weight: bolder;
-    }
-
-    /**
-     * 1. Correct the inheritance and scaling of font size in all browsers.
-     * 2. Correct the odd `em` font sizing in all browsers.
-     */
-    code,
-    kbd,
-    samp {
-        font-family: monospace, monospace;
-        /* 1 */
-        font-size: 1em;
-        /* 2 */
-    }
-
-    /**
-     * Add the correct font style in Android 4.3-.
-     */
-    dfn {
-        font-style: italic;
-    }
-
-    /**
-     * Add the correct background and color in IE 9-.
-     */
-    mark {
-        background-color: #ff0;
-        color: #000;
-    }
-
-    /**
-     * Add the correct font size in all browsers.
-     */
-    small {
-        font-size: 80%;
-    }
-
-    /**
-     * Prevent `sub` and `sup` elements from affecting the line height in
-     * all browsers.
-     */
-    sub,
-    sup {
-        font-size: 75%;
-        line-height: 0;
+    .row {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
         position: relative;
-        vertical-align: baseline;
     }
 
-    sub {
-        bottom: -0.25em;
+    .row-space {
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -moz-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
     }
 
-    sup {
-        top: -0.5em;
+    .row-refine {
+        margin: 0 -15px;
     }
 
-    /* Embedded content
+    .col-2 {
+        width: -webkit-calc((100% - 20px) / 2);
+        width: -moz-calc((100% - 20px) / 2);
+        width: calc((100% - 20px) / 2);
+    }
+
+    @media (max-width: 767px) {
+        .col-2 {
+            width: 100%;
+        }
+    }
+
+    /* ==========================================================================
+       #BOX-SIZING
        ========================================================================== */
     /**
-     * Add the correct display in IE 9-.
+     * More sensible default box-sizing:
+     * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
      */
-    audio,
-    video {
-        display: inline-block;
+    html {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
 
-    /**
-     * Add the correct display in iOS 4-7.
-     */
-    audio:not([controls]) {
-        display: none;
-        height: 0;
-    }
-
-    /**
-     * Remove the border on images inside links in IE 10-.
-     */
-    img {
-        border-style: none;
-    }
-
-    /**
-     * Hide the overflow in IE.
-     */
-    svg:not(:root) {
-        overflow: hidden;
-    }
-
-    /* Forms
-       ========================================================================== */
-    /**
-     * 1. Change the font styles in all browsers (opinionated).
-     * 2. Remove the margin in Firefox and Safari.
-     */
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-        font-family: sans-serif;
-        /* 1 */
-        font-size: 100%;
-        /* 1 */
-        line-height: 1.15;
-        /* 1 */
+    * {
+        padding: 0;
         margin: 0;
-        /* 2 */
     }
 
-    /**
-     * Show the overflow in IE.
-     * 1. Show the overflow in Edge.
-     */
-    button,
-    input {
-        /* 1 */
-        overflow: visible;
+    *, *:before, *:after {
+        -webkit-box-sizing: inherit;
+        -moz-box-sizing: inherit;
+        box-sizing: inherit;
     }
 
+    /* ==========================================================================
+       #RESET
+       ========================================================================== */
     /**
-     * Remove the inheritance of text transform in Edge, Firefox, and IE.
-     * 1. Remove the inheritance of text transform in Firefox.
+     * A very simple reset that sits on top of Normalize.css.
      */
-    button,
-    select {
-        /* 1 */
-        text-transform: none;
-    }
-
-    /**
-     * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
-     *    controls in Android 4.
-     * 2. Correct the inability to style clickable types in iOS and Safari.
-     */
-    button,
-    html [type="button"],
-    [type="reset"],
-    [type="submit"] {
-        -webkit-appearance: button;
-        /* 2 */
-    }
-
-    /**
-     * Remove the inner border and padding in Firefox.
-     */
-    button::-moz-focus-inner,
-    [type="button"]::-moz-focus-inner,
-    [type="reset"]::-moz-focus-inner,
-    [type="submit"]::-moz-focus-inner {
-        border-style: none;
+    body,
+    h1, h2, h3, h4, h5, h6,
+    blockquote, p, pre,
+    dl, dd, ol, ul,
+    figure,
+    hr,
+    fieldset, legend {
+        margin: 0;
         padding: 0;
     }
 
     /**
-     * Restore the focus styles unset by the previous rule.
+     * Remove trailing margins from nested lists.
      */
-    button:-moz-focusring,
-    [type="button"]:-moz-focusring,
-    [type="reset"]:-moz-focusring,
-    [type="submit"]:-moz-focusring {
-        outline: 1px dotted ButtonText;
+    li > ol,
+    li > ul {
+        margin-bottom: 0;
     }
 
     /**
-     * Correct the padding in Firefox.
+     * Remove default table spacing.
+     */
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    /**
+     * 1. Reset Chrome and Firefox behaviour which sets a `min-width: min-content;`
+     *    on fieldsets.
      */
     fieldset {
-        padding: 0.35em 0.75em 0.625em;
+        min-width: 0;
+        /* [1] */
+        border: 0;
     }
 
-    /**
-     * 1. Correct the text wrapping in Edge and IE.
-     * 2. Correct the color inheritance from `fieldset` elements in IE.
-     * 3. Remove the padding so developers are not caught out when they zero out
-     *    `fieldset` elements in all browsers.
-     */
-    legend {
-        box-sizing: border-box;
-        /* 1 */
-        color: inherit;
-        /* 2 */
-        display: table;
-        /* 1 */
+    button {
+        outline: none;
+        background: none;
+        border: none;
+        font-family: inherit;
+    }
+
+    /* ==========================================================================
+       #PAGE WRAPPER
+       ========================================================================== */
+    .page-wrapper {
+        min-height: 60vh;
+    }
+
+    body {
+        font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 400;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    h5 {
+        font-size: 15px;
+    }
+
+    h6 {
+        font-size: 13px;
+    }
+
+    img {
         max-width: 100%;
-        /* 1 */
-        padding: 0;
-        /* 3 */
-        white-space: normal;
-        /* 1 */
-    }
-
-    /**
-     * 1. Add the correct display in IE 9-.
-     * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
-     */
-    progress {
-        display: inline-block;
-        /* 1 */
-        vertical-align: baseline;
-        /* 2 */
-    }
-
-    /**
-     * Remove the default vertical scrollbar in IE.
-     */
-    textarea {
-        overflow: auto;
-    }
-
-    /**
-     * 1. Add the correct box sizing in IE 10-.
-     * 2. Remove the padding in IE 10-.
-     */
-    [type="checkbox"],
-    [type="radio"] {
-        box-sizing: border-box;
-        /* 1 */
-        padding: 0;
-        /* 2 */
-    }
-
-    /**
-     * Correct the cursor style of increment and decrement buttons in Chrome.
-     */
-    [type="number"]::-webkit-inner-spin-button,
-    [type="number"]::-webkit-outer-spin-button {
         height: auto;
     }
 
-    /**
-     * 1. Correct the odd appearance in Chrome and Safari.
-     * 2. Correct the outline style in Safari.
-     */
-    [type="search"] {
-        -webkit-appearance: textfield;
-        /* 1 */
-        outline-offset: -2px;
-        /* 2 */
-    }
-
-    /**
-     * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
-     */
-    [type="search"]::-webkit-search-cancel-button,
-    [type="search"]::-webkit-search-decoration {
-        -webkit-appearance: none;
-    }
-
-    /**
-     * 1. Correct the inability to style clickable types in iOS and Safari.
-     * 2. Change font properties to `inherit` in Safari.
-     */
-    ::-webkit-file-upload-button {
-        -webkit-appearance: button;
-        /* 1 */
-        font: inherit;
-        /* 2 */
-    }
-
-    /* Interactive
-       ========================================================================== */
-    /*
-     * Add the correct display in IE 9-.
-     * 1. Add the correct display in Edge, IE, and Firefox.
-     */
-    details,
-    menu {
-        display: block;
-    }
-
-    /*
-     * Add the correct display in all browsers.
-     */
-    summary {
-        display: list-item;
-    }
-
-    /* Scripting
-       ========================================================================== */
-    /**
-     * Add the correct display in IE 9-.
-     */
-    canvas {
+    a {
         display: inline-block;
+        text-decoration: none;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        transition: all 0.4s ease;
     }
 
-    /**
-     * Add the correct display in IE.
-     */
-    template {
-        display: none;
+    a:link {
+        text-decoration: none;
     }
 
-    /* Hidden
+    a:visited {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    a:active {
+        text-decoration: none;
+    }
+
+    /* ==========================================================================
+       #BACKGROUND
        ========================================================================== */
-    /**
-     * Add the correct display in IE 10-.
-     */
-    [hidden] {
+    .bg-img-3 {
+        background: url("../images/bg-img-03.jpg") center center/cover no-repeat;
+    }
+
+    .bg-color-1 {
+        background: url("https://img.peapix.com/dd9d5d4a1e544759ad468446778f92d1.jpg?attachment&modal");
+    }
+
+    /* ==========================================================================
+       #SPACING
+       ========================================================================== */
+    .p-t-15 {
+        padding-top: 15px;
+    }
+
+    .p-t-5 {
+        padding-top: 5px;
+    }
+
+    .p-t-275 {
+        padding-top: 275px;
+    }
+
+    @media (max-width: 767px) {
+        .p-t-275 {
+            padding-top: 120px;
+        }
+    }
+
+    .p-t-395 {
+        padding-top: 195px;
+    }
+
+    @media (max-width: 767px) {
+        .p-t-395 {
+            padding-top: 120px;
+        }
+    }
+
+    .p-t-290 {
+        padding-top: 290px;
+    }
+
+    @media (max-width: 767px) {
+        .p-t-290 {
+            padding-top: 120px;
+        }
+    }
+
+    .p-t-240 {
+        padding-top: 240px;
+    }
+
+    @media (max-width: 767px) {
+        .p-t-240 {
+            padding-top: 150px;
+        }
+    }
+
+    .p-t-200 {
+        padding-top: 200px;
+    }
+
+    @media (max-width: 767px) {
+        .p-t-200 {
+            padding-top: 150px;
+        }
+    }
+
+    .p-t-165 {
+        padding-top: 165px;
+    }
+
+    @media (max-width: 767px) {
+        .p-t-165 {
+            padding-top: 120px;
+        }
+    }
+
+    .p-b-100 {
+        padding-bottom: 100px;
+    }
+
+    @media (max-width: 767px) {
+        .p-b-100 {
+            padding-bottom: 250px;
+        }
+    }
+
+    .p-b-120 {
+        padding-bottom: 120px;
+    }
+
+    @media (max-width: 767px) {
+        .p-b-120 {
+            padding-bottom: 250px;
+        }
+    }
+
+    .m-r-45 {
+        margin-right: 45px;
+    }
+
+    @media (max-width: 767px) {
+        .m-r-45 {
+            margin-right: 15px;
+        }
+    }
+
+    /* ==========================================================================
+       #WRAPPER
+       ========================================================================== */
+    .wrapper {
+        margin: 0 auto;
+    }
+
+    .wrapper--w680 {
+        max-width: 680px;
+    }
+
+    .wrapper--w720 {
+        max-width: 720px;
+    }
+
+    .wrapper--w900 {
+        max-width: 900px;
+    }
+
+    .wrapper--w1070 {
+        max-width: 1070px;
+    }
+
+    .wrapper--w1226 {
+        max-width: 1226px;
+    }
+
+    /* ==========================================================================
+       #BUTTON
+       ========================================================================== */
+    .btn-submit {
+        display: inline-block;
+        line-height: 80px;
+        font-family: inherit;
+        background: #ffe151;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        text-transform: capitalize;
+        color: #333;
+        font-size: 18px;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        padding: 0 30px;
+        -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-submit:hover {
+        background: #ebcd3d;
+    }
+
+    @media (max-width: 767px) {
+        .btn-submit {
+            width: 100%;
+        }
+    }
+
+    .m-t-0 {
+        margin-top: 0;
+    }
+
+    .m-t-15 {
+        margin-top: 15px;
+    }
+
+    .m-t-35 {
+        margin-top: 35px;
+    }
+
+    /* ==========================================================================
+       #DATEPICKER
+       ========================================================================== */
+    .daterangepicker {
+        display: none;
+        width: 560px;
+        -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        padding: 0;
+        margin-top: 27px;
+        margin-left: -20px;
+        box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 767px) {
+        .daterangepicker {
+            width: -webkit-calc(100% - 60px);
+            width: -moz-calc(100% - 60px);
+            width: calc(100% - 60px);
+            padding: 25px 0px;
+        }
+    }
+
+    .daterangepicker:before {
         display: none;
     }
 
-    html {
-        height: 100%;
+    .daterangepicker:after {
+        top: -13px;
+        border-right: 13px solid transparent;
+        border-bottom: 13px solid #fff;
+        border-left: 13px solid transparent;
     }
 
-    fieldset {
+    .daterangepicker.opensright:after {
+        left: 84px;
+    }
+
+    .daterangepicker .calendar {
         margin: 0;
-        padding: 0;
-        -webkit-margin-start: 0;
-        -webkit-margin-end: 0;
-        -webkit-padding-before: 0;
-        -webkit-padding-start: 0;
-        -webkit-padding-end: 0;
-        -webkit-padding-after: 0;
-        border: 0;
+        width: 280px;
+        max-width: 280px;
+        padding: 30px;
+        padding-bottom: 25px;
     }
 
-    legend {
-        margin: 0;
-        padding: 0;
-        display: block;
-        -webkit-padding-start: 0;
-        -webkit-padding-end: 0;
+    .daterangepicker .calendar th {
+        font-size: 14px;
+        color: #555;
+        cursor: default;
+        font-weight: 700;
     }
 
-    /*===============================
-    =            Choices            =
-    ===============================*/
-    .choices {
-        position: relative;
-        margin-bottom: 24px;
+    .daterangepicker .calendar th.month {
         font-size: 16px;
+        color: #555;
+        font-weight: 700;
     }
 
-    .choices:focus {
+    .daterangepicker .calendar th.next, .daterangepicker .calendar th.prev {
+        font-size: 20px;
+        color: #ccc;
+        text-align: center;
+    }
+
+    .daterangepicker .calendar.left {
+        border-right: 1px solid #e5e5e5;
+    }
+
+    .daterangepicker .calendar.right {
+        float: right;
+    }
+
+    @media (max-width: 767px) {
+        .daterangepicker .calendar {
+            width: 230px;
+            max-width: 230px;
+            padding: 0;
+        }
+        .daterangepicker .calendar.right, .daterangepicker .calendar.left {
+            border: none;
+            float: none !important;
+            clear: none !important;
+            margin: 0 auto !important;
+        }
+        .daterangepicker .calendar.left {
+            margin-bottom: 30px !important;
+        }
+    }
+
+    .daterangepicker .calendar-table {
+        padding: 0;
+    }
+
+    .daterangepicker .calendar-table .table-condensed thead tr:nth-child(2) th {
+        padding-top: 27px;
+        padding-bottom: 17px;
+    }
+
+    .daterangepicker.ltr .calendar.left .calendar-table {
+        padding: 0;
+    }
+
+    .daterangepicker_input {
+        display: none;
+    }
+
+    .daterangepicker td {
+        height: 26px;
+        width: 26px;
+        min-width: 26px;
+        min-width: 26px;
+        font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+        text-align: center;
+        font-size: 14px;
+        color: #999;
+    }
+
+    @media (max-width: 767px) {
+        .daterangepicker td {
+            height: 26px;
+            width: 26px;
+        }
+    }
+
+    .daterangepicker td.start-date, .daterangepicker td.end-date {
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        background: #00ad5f;
+    }
+
+    .daterangepicker td.start-date.end-date {
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    .daterangepicker td.in-range {
+        background: #eee;
+        color: #2c6ed5;
+    }
+
+    .daterangepicker td.in-range.end-date {
+        color: #fff;
+    }
+
+    .daterangepicker td.today {
+        -webkit-border-radius: 3px !important;
+        -moz-border-radius: 3px !important;
+        border-radius: 3px !important;
+        background: #eee;
+        color: #2c6ed5;
+    }
+
+    .daterangepicker td.today.in-range {
+        -webkit-border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
+        border-radius: 0 !important;
+        background: #eeeeee;
+    }
+
+    .daterangepicker td.off, .daterangepicker td.off.in-range, .daterangepicker td.off.start-date, .daterangepicker td.off.end-date {
+        background: transparent;
+    }
+
+    .daterangepicker select {
         outline: none;
+        font-family: inherit;
     }
 
-    .choices:last-child {
-        margin-bottom: 0;
+    .daterangepicker select.monthselect, .daterangepicker select.yearselect {
+        font-size: 16px;
+        padding: 8px 4px;
     }
 
-    .choices.is-disabled .choices__inner, .choices.is-disabled .choices__input {
-        background-color: #EAEAEA;
-        cursor: not-allowed;
+    .daterangepicker td.active,
+    .daterangepicker td.active:hover {
+        background: #2c6ed5;
+    }
+
+    .daterangepicker td.active.today,
+    .daterangepicker td.active:hover.today {
+        background: #eee;
+    }
+
+    /* ==========================================================================
+       #FORM
+       ========================================================================== */
+    input,
+    textarea {
+        outline: none;
+        margin: 0;
+        border: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        width: 100%;
+        font-size: 18px;
+        font-family: inherit;
+    }
+
+    input:disabled {
+        cursor: pointer;
+        background: transparent;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    /* CHECKBOX */
+    /* Radio button */
+    .radio-row {
+        padding-top: 10px;
+    }
+
+    .radio-container {
+        display: inline-block;
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        font-size: 15px;
+        color: #fff;
+        font-weight: 700;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
     }
 
-    .choices.is-disabled .choices__item {
-        cursor: not-allowed;
-    }
-
-    .choices[data-type*="select-one"] {
+    .radio-container input {
+        position: absolute;
+        opacity: 0;
         cursor: pointer;
     }
 
-    .choices[data-type*="select-one"] .choices__inner {
-        padding-bottom: 7.5px;
-    }
-
-    .choices[data-type*="select-one"] .choices__input {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        border-bottom: 1px solid #DDDDDD;
-        background-color: #FFFFFF;
-        margin: 0;
-    }
-
-    .choices[data-type*="select-one"] .choices__button {
-        background-image: url("../../icons/cross-inverse.svg");
-        padding: 0;
-        background-size: 8px;
-        height: 100%;
+    .radio-checkmark {
         position: absolute;
-        top: 50%;
-        right: 0;
-        margin-top: -10px;
-        margin-right: 25px;
+        top: 0;
+        left: 0;
         height: 20px;
         width: 20px;
-        border-radius: 10em;
-        opacity: .5;
+        background-color: #eee;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
     }
 
-    .choices[data-type*="select-one"] .choices__button:hover, .choices[data-type*="select-one"] .choices__button:focus {
-        opacity: 1;
+    .radio-container:hover input ~ .radio-checkmark {
+        background-color: #fff;
     }
 
-    .choices[data-type*="select-one"] .choices__button:focus {
-        box-shadow: 0px 0px 0px 2px #00BCD4;
+    .radio-container input:checked ~ .radio-checkmark {
+        background-color: #fff;
     }
 
-    .choices[data-type*="select-one"]:after {
+    .radio-checkmark:after {
         content: "";
-        height: 0;
-        width: 0;
-        border-style: solid;
-        border-color: #333333 transparent transparent transparent;
-        border-width: 5px;
         position: absolute;
-        right: 11.5px;
-        top: 50%;
-        margin-top: -2.5px;
-        pointer-events: none;
-    }
-
-    .choices[data-type*="select-one"].is-open:after {
-        border-color: transparent transparent #333333 transparent;
-        margin-top: -7.5px;
-    }
-
-    .choices[data-type*="select-one"][dir="rtl"]:after {
-        left: 11.5px;
-        right: auto;
-    }
-
-    .choices[data-type*="select-one"][dir="rtl"] .choices__button {
-        right: auto;
-        left: 0;
-        margin-left: 25px;
-        margin-right: 0;
-    }
-
-    .choices[data-type*="select-multiple"] .choices__inner, .choices[data-type*="text"] .choices__inner {
-        cursor: text;
-    }
-
-    .choices[data-type*="select-multiple"] .choices__button, .choices[data-type*="text"] .choices__button {
-        position: relative;
-        display: inline-block;
-        margin-top: 0;
-        margin-right: -4px;
-        margin-bottom: 0;
-        margin-left: 8px;
-        padding-left: 16px;
-        border-left: 1px solid #008fa1;
-        background-image: url("../../icons/cross.svg");
-        background-size: 8px;
-        width: 8px;
-        line-height: 1;
-        opacity: .75;
-    }
-
-    .choices[data-type*="select-multiple"] .choices__button:hover, .choices[data-type*="select-multiple"] .choices__button:focus, .choices[data-type*="text"] .choices__button:hover, .choices[data-type*="text"] .choices__button:focus {
-        opacity: 1;
-    }
-
-    .choices__inner {
-        display: inline-block;
-        vertical-align: top;
-        width: 100%;
-        background-color: #f9f9f9;
-        padding: 7.5px 7.5px 3.75px;
-        border: 1px solid #DDDDDD;
-        border-radius: 2.5px;
-        font-size: 14px;
-        min-height: 44px;
-        overflow: hidden;
-    }
-
-    .is-focused .choices__inner, .is-open .choices__inner {
-        border-color: #b7b7b7;
-    }
-
-    .is-open .choices__inner {
-        border-radius: 2.5px 2.5px 0 0;
-    }
-
-    .is-flipped.is-open .choices__inner {
-        border-radius: 0 0 2.5px 2.5px;
-    }
-
-    .choices__list {
-        margin: 0;
-        padding-left: 0;
-        list-style: none;
-    }
-
-    .choices__list--single {
-        display: inline-block;
-        padding: 4px 16px 4px 4px;
-        width: 100%;
-    }
-
-    [dir="rtl"] .choices__list--single {
-        padding-right: 4px;
-        padding-left: 16px;
-    }
-
-    .choices__list--single .choices__item {
-        width: 100%;
-    }
-
-    .choices__list--multiple {
-        display: inline;
-    }
-
-    .choices__list--multiple .choices__item {
-        display: inline-block;
-        vertical-align: middle;
-        border-radius: 20px;
-        padding: 4px 10px;
-        font-size: 12px;
-        font-weight: 500;
-        margin-right: 3.75px;
-        margin-bottom: 3.75px;
-        background-color: #00BCD4;
-        border: 1px solid #00a5bb;
-        color: #FFFFFF;
-        word-break: break-all;
-    }
-
-    .choices__list--multiple .choices__item[data-deletable] {
-        padding-right: 5px;
-    }
-
-    [dir="rtl"] .choices__list--multiple .choices__item {
-        margin-right: 0;
-        margin-left: 3.75px;
-    }
-
-    .choices__list--multiple .choices__item.is-highlighted {
-        background-color: #00a5bb;
-        border: 1px solid #008fa1;
-    }
-
-    .is-disabled .choices__list--multiple .choices__item {
-        background-color: #aaaaaa;
-        border: 1px solid #919191;
-    }
-
-    .choices__list--dropdown {
         display: none;
-        z-index: 1;
-        position: absolute;
-        width: 100%;
-        background-color: #FFFFFF;
-        border: 1px solid #DDDDDD;
-        top: 100%;
-        margin-top: -1px;
-        border-bottom-left-radius: 2.5px;
-        border-bottom-right-radius: 2.5px;
-        overflow: hidden;
-        word-break: break-all;
     }
 
-    .choices__list--dropdown.is-active {
+    .radio-container input:checked ~ .radio-checkmark:after {
         display: block;
     }
 
-    .is-open .choices__list--dropdown {
-        border-color: #b7b7b7;
+    .radio-container .radio-checkmark:after {
+        top: 4px;
+        left: 4px;
+        width: 12px;
+        height: 12px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        background: #00ad5f;
     }
 
-    .is-flipped .choices__list--dropdown {
-        top: auto;
-        bottom: 100%;
-        margin-top: 0;
-        margin-bottom: -1px;
-        border-radius: .25rem .25rem 0 0;
-    }
-
-    .choices__list--dropdown .choices__list {
+    .input-group {
         position: relative;
-        max-height: 300px;
-        overflow: auto;
-        -webkit-overflow-scrolling: touch;
-        will-change: scroll-position;
+        margin-bottom: 23px;
+        -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        padding: 16px 20px;
+        padding-bottom: 10px;
+        background: #fff;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        float: left;
+        margin-right: 10px;
     }
 
-    .choices__list--dropdown .choices__item {
-        position: relative;
-        padding: 10px;
-        font-size: 14px;
+    .form::after {
+        content: "";
+        clear: both;
+        display: table;
     }
 
-    [dir="rtl"] .choices__list--dropdown .choices__item {
-        text-align: right;
-    }
-
-    @media (min-width: 640px) {
-        .choices__list--dropdown .choices__item--selectable {
-            padding-right: 100px;
-        }
-        .choices__list--dropdown .choices__item--selectable:after {
-            content: attr(data-select-text);
-            font-size: 12px;
-            opacity: 0;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        [dir="rtl"] .choices__list--dropdown .choices__item--selectable {
-            text-align: right;
-            padding-left: 100px;
-            padding-right: 10px;
-        }
-        [dir="rtl"] .choices__list--dropdown .choices__item--selectable:after {
-            right: auto;
-            left: 10px;
-        }
-    }
-
-    .choices__list--dropdown .choices__item--selectable.is-highlighted {
-        background-color: #f2f2f2;
-    }
-
-    .choices__list--dropdown .choices__item--selectable.is-highlighted:after {
-        opacity: .5;
-    }
-
-    .choices__item {
-        cursor: default;
-    }
-
-    .choices__item--selectable {
+    .input-icon {
+        font-size: 24px;
+        color: #808080;
+        position: absolute;
+        line-height: 60px;
+        right: 20px;
+        top: 0;
+        width: 20px;
+        background: #fff;
+        text-align: center;
         cursor: pointer;
     }
 
-    .choices__item--disabled {
-        cursor: not-allowed;
+    .input-icon::before {
+        display: block;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+    .label {
+        font-size: 12px;
+        color: #999;
+        text-transform: uppercase;
+        display: block;
+        font-weight: 700;
+    }
+
+    .input--large {
+        width: 300px;
+    }
+
+    .input--medium {
+        width: 190px;
+    }
+
+    @media (max-width: 767px) {
+        .input--large,
+        .input--medium {
+            width: 100%;
+        }
+    }
+
+    .input--style-1 {
+        font-size: 18px;
+        padding: 9px 0;
+        color: #666;
+        font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+    }
+
+    .input--style-1::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+        color: #333;
+    }
+
+    .input--style-1:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: #333;
+        opacity: 1;
+    }
+
+    .input--style-1::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: #333;
+        opacity: 1;
+    }
+
+    .input--style-1:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: #333;
+    }
+
+    .input--style-1:-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: #333;
+    }
+
+    .m-b-0 {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 767px) {
+        .m-b-0 {
+            margin-bottom: 26px;
+        }
+    }
+
+    /* ==========================================================================
+       #SELECT
+       ========================================================================== */
+    .quantity {
+        font-size: 18px;
+        color: #333;
+    }
+
+    .icon-con {
+        position: absolute;
+        width: 30px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        overflow: hidden;
+        background: #f2f2f2;
+        right: 11px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .minus,
+    .plus {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-size: 18px;
+        color: #b2b2b2;
+        cursor: pointer;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        opacity: .5;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        transition: all 0.4s ease;
     }
 
-    .choices__heading {
-        font-weight: 600;
-        font-size: 12px;
-        padding: 10px;
-        border-bottom: 1px solid #f7f7f7;
-        color: gray;
-    }
-
-    .choices__button {
-        text-indent: -9999px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        border: 0;
-        background-color: transparent;
-        background-repeat: no-repeat;
-        background-position: center;
-        cursor: pointer;
-    }
-
-    .choices__button:focus {
-        outline: none;
-    }
-
-    .choices__input {
-        display: inline-block;
-        vertical-align: baseline;
-        background-color: #f9f9f9;
-        font-size: 14px;
-        margin-bottom: 5px;
-        border: 0;
-        border-radius: 0;
-        max-width: 100%;
-        padding: 4px 0 4px 2px;
-    }
-
-    .choices__input:focus {
-        outline: 0;
-    }
-
-    [dir="rtl"] .choices__input {
-        padding-right: 2px;
-        padding-left: 0;
-    }
-
-    .choices__placeholder {
-        opacity: .5;
-    }
-
-    /*=====  End of Choices  ======*/
-    * {
-        box-sizing: border-box;
-    }
-
-    input,
-    button {
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .s131 {
-        min-height: 100vh;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -ms-flex-align: center;
-        align-items: center;
-        font-family: 'Poppins', sans-serif;
-        background: url("https://img.peapix.com/dd9d5d4a1e544759ad468446778f92d1.jpg?attachment&modal");
-        background-size: cover;
-        background-position: center center;
-        padding: 15px;
-        margin: 0px 0px -3% 0px;
-    }
-    }
-
-    .s131 form {
-        width: 100%;
-        max-width: 940px;
-    }
-
-    .s131 form .inner-form {
-        display: -ms-flexbox;
-        display: flex;
-        width: 100%;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-
-    .s131 form .inner-form .input-field {
-        height: 68px;
-    }
-
-    .s131 form .inner-form .input-field input {
-        height: 100%;
-        background: #fff;
-        border: 0;
-        display: block;
-        width: 100%;
-        padding: 10px 32px;
-        font-size: 16px;
-        color: #333;
-        border: 1px solid #e5e5e5;
-    }
-
-    .s131 form .inner-form .input-field input.placeholder {
-        color: #9a9a9a;
-        font-size: 20px;
-    }
-
-    .s131 form .inner-form .input-field input:-moz-placeholder {
-        color: #9a9a9a;
-        font-size: 20px;
-    }
-
-    .s131 form .inner-form .input-field input::-webkit-input-placeholder {
-        color: #9a9a9a;
-        font-size: 20px;
-    }
-
-    .s131 form .inner-form .input-field input:hover, .s131 form .inner-form .input-field input:focus {
-        box-shadow: none;
-        outline: 0;
-    }
-
-    .s131 form .inner-form .input-field.first-wrap {
-        -ms-flex-positive: 1;
-        flex-grow: 1;
-    }
-
-    .s131 form .inner-form .input-field.first-wrap input {
-        border-right: 0;
-    }
-
-    .s131 form .inner-form .input-field.second-wrap {
-        min-width: 260px;
-    }
-
-    .s131 form .inner-form .input-field.second-wrap .choices__inner {
-        background: #fff;
-        border-radius: 0;
-        border: 1px solid #e5e5e5;
-        height: 100%;
-        color: #333;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: center;
-        align-items: center;
-        padding: 0 30px;
-    }
-
-    .s131 form .inner-form .input-field.second-wrap .choices__inner .choices__list.choices__list--single {
-        display: -ms-flexbox;
-        display: flex;
-        padding: 0;
-        -ms-flex-align: center;
-        align-items: center;
-        height: 100%;
-    }
-
-    .s131 form .inner-form .input-field.second-wrap .choices__inner .choices__item.choices__item--selectable.choices__placeholder {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: center;
-        align-items: center;
-        height: 100%;
-        opacity: 1;
-        color: #333;
-        font-size: 20px;
-    }
-
-    .s131 form .inner-form .input-field.second-wrap .choices__inner .choices__list--single .choices__item {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: center;
-        align-items: center;
-        height: 100%;
-        font-size: 20px;
-    }
-
-    .s131 form .inner-form .input-field.second-wrap .choices__list.choices__list--dropdown {
-        border: 0;
-        background: #fff;
-    }
-
-    .s131 form .inner-form .input-field.second-wrap .choices__list--dropdown .choices__item--selectable.is-highlighted {
-        background: #fff;
-        color: #333;
-    }
-
-    .s131 form .inner-form .input-field.second-wrap .choices__list--dropdown .choices__item {
-        color: #333;
-    }
-
-    .s131 form .inner-form .input-field.second-wrap .choices__list--dropdown {
-        margin-top: 0;
-    }
-
-    .s131 form .inner-form .input-field.third-wrap {
-        width: 164px;
-    }
-
-    .s131 form .inner-form .input-field.third-wrap .btn-search {
-        height: 100%;
-        width: 100%;
-        white-space: nowrap;
-        font-size: 20px;
+    .minus:hover,
+    .plus:hover {
+        background: #2c6ed5;
         color: #fff;
-        border: 0;
-        cursor: pointer;
-        position: relative;
-        z-index: 0;
-        background: #4272d7;
-        transition: all .2s ease-out, color .2s ease-out;
-        font-weight: 300;
     }
 
-    .s131 form .inner-form .input-field.third-wrap .btn-search:hover {
-        background: #2d62d3;
-    }
-
-    .s131 form .inner-form .input-field.third-wrap .btn-search:focus {
-        outline: 0;
-        box-shadow: none;
-    }
-
-    .s131 form .inner-form .choices[data-type*="select-one"] .choices__inner {
-        padding-bottom: 0;
-    }
-
-    .s131 form .inner-form .choices[data-type*="select-one"]:after {
-        border: 0;
-        width: 18px;
-        height: 18px;
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
         margin: 0;
-        transform: translateY(-50%);
-        opacity: 1;
-        right: 15px;
-        top: 50%;
-        background-size: 18px 18px;
-        background-position: right center;
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='%23999' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z'/%3e%3c/svg%3e");
-        background-repeat: no-repeat;
     }
 
-    .s131 form .inner-form .choices[data-type*="select-one"].is-open:after {
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='%23999' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath d='M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z'/%3e%3c/svg%3e");
+    /* ==========================================================================
+       #CARD
+       ========================================================================== */
+    .card-7 {
+        background: transparent;
+        position: relative;
     }
 
-    @media screen and (max-width: 992px) {
-        .s131 form .inner-form .input-field {
-            height: 60px;
-        }
+    .card-7 .card-body {
+        padding: 0 20px;
     }
-
-    @media screen and (max-width: 767px) {
-        .s131 form .inner-form {
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            padding: 20px;
-        }
-        .s131 form .inner-form .input-field {
-            margin-bottom: 20px;
-        }
-        .s131 form .inner-form .input-field input {
-            padding: 10px 15px;
-        }
-        .s131 form .inner-form .input-field.first-wrap {
-            width: 100%;
-        }
-        .s131 form .inner-form .input-field.first-wrap .choices__inner {
-            padding: 10px 15px;
-        }
-        .s131 form .inner-form .input-field.second-wrap {
-            width: 100%;
-        }
-        .s131 form .inner-form .input-field.second-wrap input {
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .s131 form .inner-form .input-field.third-wrap {
-            margin-bottom: 0;
-            width: 100%;
-        }
-    }
-
-    /*# sourceMappingURL=Searchs_131.css.map */
 
 </style>
-<div class="s131">
-    <form>
-        <div class="inner-form">
-            <div class="input-field first-wrap">
-                <input id="search" type="text" placeholder="What are you looking for?" />
-            </div>
-            <div class="input-field second-wrap">
-                <div class="input-select">
-                    <select data-trigger="" name="choices-single-defaul">
-                        <option placeholder="">CATEGORY</option>
-                        <option>Subject A</option>
-                        <option>Subject B</option>
-                        <option>Subject C</option>
-                    </select>
-                </div>
-            </div>
-            <div class="input-field third-wrap">
-                <button class="btn-search" type="button">SEARCH</button>
+
+<body>
+<div class="page-wrapper bg-color-1 p-t-395 p-b-120">
+    <div class="wrapper wrapper--w1070">
+        <div class="card card-7">
+            <div class="card-body">
+                <form class="form" method="POST" action="#">
+                    <div class="input-group input--large">
+                        <label class="label">going to</label>
+                        <input class="input--style-1" type="text" placeholder="Destination, hotel name" name="going">
+                    </div>
+                    <div class="input-group input--medium">
+                        <label class="label">Check-In</label>
+                        <input class="input--style-1" type="text" name="checkin" placeholder="mm/dd/yyyy" id="input-start">
+                    </div>
+                    <div class="input-group input--medium">
+                        <label class="label">Check-Out</label>
+                        <input class="input--style-1" type="text" name="checkout" placeholder="mm/dd/yyyy" id="input-end">
+                    </div>
+                    <div class="input-group input--medium">
+                        <label class="label">guests</label>
+                        <div class="input-group-icon js-number-input">
+                            <div class="icon-con">
+                                <span class="plus">+</span>
+                                <span class="minus">-</span>
+                            </div>
+                            <input class="input--style-1 quantity" type="text" name="guests" value="2 Guests">
+                        </div>
+                    </div>
+                    <button class="btn-submit" type="submit">search</button>
+                </form>
             </div>
         </div>
-    </form>
+    </div>
 </div>
-<script src="js/extention/choices.js"></script>
-<script>
-    const choices = new Choices('[data-trigger]',
-        {
-            searchEnabled: false
-        });
 
+<!-- Jquery JS-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<!-- Vendor JS-->
+<script src="vendor/select2/select2.min.js"></script>
+<script src="vendor/jquery-validate/jquery.validate.min.js"></script>
+<script src="vendor/bootstrap-wizard/bootstrap.min.js"></script>
+<script src="vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+<script src="vendor/datepicker/moment.min.js"></script>
+<script src="vendor/datepicker/daterangepicker.js"></script>
+
+<!-- Main JS-->
+<script>
+    (function ($) {
+        'use strict';
+        /*==================================================================
+            [ Daterangepicker ]*/
+
+
+        try {
+
+            $('#input-start').daterangepicker({
+                ranges: true,
+                autoApply: true,
+                applyButtonClasses: false,
+                autoUpdateInput: false
+            },function (start, end) {
+                $('#input-start').val(start.format('MM/DD/YYYY'));
+                $('#input-end').val(end.format('MM/DD/YYYY'));
+            });
+
+
+        } catch(er) {console.log(er);}
+        /*==================================================================
+            [ Input Number ]*/
+
+        try {
+
+            var inputCon = $('.js-number-input');
+
+            inputCon.each(function () {
+                var that = $(this);
+
+                var btnPlus = that.find('.plus');
+                var btnMinus = that.find('.minus');
+                var qtyInput = that.find('.quantity');
+
+
+                btnPlus.on('click', function () {
+                    var oldValue = parseInt(qtyInput.val());
+                    var newVal = oldValue + 1;
+                    qtyInput.val(refineString(newVal));
+                });
+
+                btnMinus.on('click', function () {
+                    var min = 0;
+
+                    var oldValue = parseInt(qtyInput.val());
+                    if (oldValue <= min) {
+                        var newVal = oldValue;
+                    } else {
+                        var newVal = oldValue - 1;
+                    }
+                    qtyInput.val(refineString(newVal));
+                });
+            });
+
+            function refineString(s) {
+                if(parseInt(s) <= 1) return parseInt(s) + " Guest";
+                else return parseInt(s) + " Guests";
+            }
+
+        }catch (e) {
+            console.log(e);
+        }
+
+    })(jQuery);
 </script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
