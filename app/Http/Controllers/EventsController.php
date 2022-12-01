@@ -31,10 +31,10 @@ class EventsController extends Controller
         function getRandomEvents()
         {
             $eventsList = Events::inRandomOrder()
-            ->limit(5)
-            ->orderBy(EventsFilters::TAGS_CATEGO_ES->value)
-            ->orderBy(EventsFilters::COMARCA_I_MUNICIPI->value)
-            ->get();
+                ->limit(5)
+                ->orderBy(EventsFilters::TAGS_CATEGOR_ES->value)
+                ->orderBy(EventsFilters::COMARCA_I_MUNICIPI->value)
+                ->get();
 
             return $eventsList;
         }
@@ -54,10 +54,17 @@ class EventsController extends Controller
         return $eventAndRandomEvents;
     }
 
-    public function getEventsFromProvince(string $municipi)
+    /**
+     * @param string $province
+     * @return Events[]|_IH_Events_C
+     * el formulario llamara a este metodo
+     */
+    public function getEventsFromProvince(string $province)
     {
-        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $municipi . '%')->get();
-        //TODO oredenar por fecha inicio y no q no hayan terminado
+        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $province . '%')
+            ->where(EventsFilters::DATA_FI->value, '>', '2022')
+            ->orderBy(EventsFilters::DATA_INICI->value, 'asc')
+            ->get();
     }
 
 
