@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EventsController::class, 'getRandomEvents']);
 
-Route::post('/events/search', [EventsController::class, 'getEvents']);
+Route::post('/search', [EventsController::class, 'getEvents']);
 
 /**
  *  eventName = Akelarre
