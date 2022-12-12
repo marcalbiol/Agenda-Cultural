@@ -15,9 +15,9 @@
     @foreach($events as $event)
         <article class="postcard light blue mx-auto">
             <a class="postcard__img_link" href="#">
-                <img class="postcard__img" src="https://picsum.photos/1000/1000?random={{$event->id}}" alt="Image Title"/>
+                <img class="postcard__img" src="{{'https://agenda.cultura.gencat.cat/'.explode(",", $event->imatges)[0]}}" alt="Image Title"/>
             </a>
-
+            
             <div class="postcard__text t-dark">
                 <h1 class="postcard__title blue"><a href="#">{{$event->denominaci}}</a></h1>
 
