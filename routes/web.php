@@ -18,10 +18,9 @@ use Illuminate\Support\Facades\Route;
 // routes are loaded by the RoueServiceProvider within a group which
 // contains the "web" middleware group. Now create something great!
 
+Route::get('/', [EventsController::class, 'getRandomEvents']);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::post('/search', [EventsController::class, 'getEvents']);
 
 /**
  *  eventName = Akelarre
@@ -29,18 +28,26 @@ use Illuminate\Support\Facades\Route;
  */
 Route::get('events/name/{eventName}/codi/{eventCodi}', [EventsController::class, 'getEventNameWithCodi']);
 
+/**
+ * eventos por categoria
+ */
+Route::get('events/category/ambit/{categoryName}', [EventsController::class, 'getEventsFromCategory']);
+
 Route::get('events/nameEvent/{nameEvent}', [EventsController::class, 'getEventName']);
 
-Route::get('/', [EventsController::class, 'getRandomEvents']);
 
 /**
  * Llistat de tots els events que es facin
  * a la província ordenats per data d’inici.
  * No es mostren els esdeveniments finalitzats.
  */
-Route::get('events/provincia/{provinceName}', [EventsController::class, 'getEventsFromProvince']);
+Route::get('events/provincia/from/{provinceName}', [EventsController::class, 'getEventsFromProvince']);
 
-Route::get('events/provincia/{provinceName}/{category}', [EventsController::class, '']);
+/**
+ * http://127.0.0.1:8000/events/provincia/tarragona/categoria/teatre
+ * permite buscar evento por provincia y categoria
+ */
+Route::get('events/provincia/{provinceName}/categoria/{categoryName}', [EventsController::class, 'getEventsFromProvinceAndCategory']);
 
 Route::get('/events/{event}', [EventsController::class, 'show']);
 

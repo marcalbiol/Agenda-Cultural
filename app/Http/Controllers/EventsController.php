@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Enums\EventsFilters;
 use App\Models\Events;
-use Illuminate\View\View;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use LaravelIdea\Helper\App\Models\_IH_Events_C;
 
 class EventsController extends Controller
@@ -31,10 +34,10 @@ class EventsController extends Controller
         function getRandomEvents()
         {
             $eventsList = Events::inRandomOrder()
-            ->limit(5)
-            ->orderBy(EventsFilters::TAGS_CATEGO_ES->value)
-            ->orderBy(EventsFilters::COMARCA_I_MUNICIPI->value)
-            ->get();
+                ->limit(5)
+                ->orderBy(EventsFilters::TAGS_CATEGOR_ES->value)
+                ->orderBy(EventsFilters::COMARCA_I_MUNICIPI->value)
+                ->get();
 
             return $eventsList;
         }
@@ -54,10 +57,17 @@ class EventsController extends Controller
         return $eventAndRandomEvents;
     }
 
-    public function getEventsFromProvince(string $municipi)
+    /**
+     * @param string $province
+     * @return Events[]|_IH_Events_C
+     * el formulario llamara a este metodo
+     */
+    public function getEventsFromProvince(string $province)
     {
-        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $municipi . '%')->get();
-        //TODO oredenar por fecha inicio y no q no hayan terminado
+        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $province . '%')
+            ->where(EventsFilters::DATA_FI->value, '>', '2022')
+            ->orderBy(EventsFilters::DATA_INICI->value, 'asc')
+            ->get();
     }
 
 
@@ -72,8 +82,9 @@ class EventsController extends Controller
         return view('show', ['event'=>$event]);
     }
 
-    public function getByDate($year, $month) {
-        return Events::where('data_inici', 'LIKE', $year . '-' .$month . '%')->get();
+    public function getByDate($year, $month)
+    {
+        return Events::where('data_inici', 'LIKE', $year . '-' . $month . '%')->get();
     }
 
     public function generateSitemap()
@@ -89,17 +100,56 @@ class EventsController extends Controller
     }
 
     /**
-     * @return Events[]
+     * @return Application|Factory|View
      */
-    public function getRandomEvents() {
+    public function getRandomEvents()
+    {
         $events = Events::inRandomOrder()
             ->limit(10)
             ->get();
 
-        return view('welcome', ['events' => $events ]);
+        return view('welcome', compact("events"));
     }
 
+    /**
+     * @param string $denominaci
+     * @param string $data_inici
+     * @param string $data_fi
+     * @return Application|Factory|View
+     */
+    public function getEvents(Request $request)
+    {
+        $events = null;
 
-    //
+        if ($request->denominaci != null) {
+            $events = Events::where(EventsFilters::DENOMINACI->value, 'LIKE', '%' . $request->denominaci . '%');
+        }
 
+        if ($request->data_inici != null) {
+            $events = Events::where(EventsFilters::DATA_INICI->value, '>=', date($request->data_inici));
+        }
+
+        if ($request->data_fi != null) {
+            $events = Events::where(EventsFilters::DATA_INICI->value, '<=', date($request->data_fi));
+        }
+
+        if ($events != null) {
+            $events = $events->get();
+        } else {
+            return $this->getRandomEvents();
+        }
+
+        return view('welcome', compact("events"));
+    }
+
+    /**
+     * @param string $province
+     * @param string $category
+     */
+    public function getEventsFromProvinceAndCategory(string $province, string $category)
+    {
+        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $province . '%')
+            ->where(EventsFilters::TAGS_CATEGOR_ES->value, 'LIKE', 'agenda:categories/' . $category . '%')->get();
+
+    }
 }
