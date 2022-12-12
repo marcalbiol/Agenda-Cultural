@@ -17,7 +17,3 @@
 
 </body>
 </html>
-
-<?php
-
-echo $event->id;
