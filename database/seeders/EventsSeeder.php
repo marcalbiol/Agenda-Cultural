@@ -18,6 +18,7 @@ class EventsSeeder extends Seeder
         $json = file_get_contents('https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json?$limit=500', true);
         $data = json_decode($json, false);
 
+        //TODO
         foreach ($data as $event) {
             Events::create(array(
                 'codi' => $event->codi,

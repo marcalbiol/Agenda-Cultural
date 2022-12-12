@@ -1,7 +1,7 @@
 @vite(['resources/css/template/calendar.css','resources/js/template/calendar.js']);
 
 <style>
-    body{
+    body {
         background-color: rgba(228, 246, 252, 0.38);
     }
 
@@ -17,14 +17,20 @@
         @foreach($events as $event)
             <article class="postcard light blue">
                 <a class="postcard__img_link" href="#">
-                    <img class="postcard__img" src="https://picsum.photos/1000/1000?random={{$event->id}}" alt="Image Title"/>
+                    @if(!@getimagesize($event->imatges))
+                        <img class="postcard__img" src="{{'https://agenda.cultura.gencat.cat/'.$event->imatges}}"
+                             alt="Image Title"/>
+                        @else
+                        <img class="postcard__img" src="{{ asset('assets/img/hasbu.png') }}" alt="Image Title"/>
+                    @endif
                 </a>
                 <div class="postcard__text t-dark">
                     <h1 class="postcard__title blue"><a href="#">{{$event->denominaci}}</a></h1>
                     <div class="postcard__subtitle small">
                         <time datetime="2020-05-25 12:00:00">
                             <i class="fas fa-calendar-alt mr-2"></i>
-                            {{date('d-m-Y', strtotime($event->data_inici))}} | {{date('d-m-Y', strtotime($event->data_fi))}}
+                            {{date('d-m-Y', strtotime($event->data_inici))}}
+                            | {{date('d-m-Y', strtotime($event->data_fi))}}
                         </time>
                     </div>
                     <div class="postcard__bar"></div>
