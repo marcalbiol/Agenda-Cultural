@@ -18,10 +18,9 @@ use Illuminate\Support\Facades\Route;
 // routes are loaded by the RoueServiceProvider within a group which
 // contains the "web" middleware group. Now create something great!
 
+Route::get('/', [EventsController::class, 'getRandomEvents']);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::post('/search', [EventsController::class, 'getEvents']);
 
 /**
  *  eventName = Akelarre
@@ -36,7 +35,6 @@ Route::get('events/category/ambit/{categoryName}', [EventsController::class, 'ge
 
 Route::get('events/nameEvent/{nameEvent}', [EventsController::class, 'getEventName']);
 
-Route::get('/', [EventsController::class, 'getRandomEvents']);
 
 /**
  * Llistat de tots els events que es facin
