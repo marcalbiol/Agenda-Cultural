@@ -141,4 +141,15 @@ class EventsController extends Controller
 
         return view('welcome', compact("events"));
     }
+
+    /**
+     * @param string $province
+     * @param string $category
+     */
+    public function getEventsFromProvinceAndCategory(string $province, string $category)
+    {
+        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $province . '%')
+            ->where(EventsFilters::TAGS_CATEGOR_ES->value, 'LIKE', 'agenda:categories/' . $category . '%')->get();
+
+    }
 }
