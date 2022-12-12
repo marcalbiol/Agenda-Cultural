@@ -96,17 +96,14 @@ class EventsController extends Controller
     }
 
     /**
-     * @return Events[]
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function getRandomEvents() {
         $events = Events::inRandomOrder()
             ->limit(10)
             ->get();
 
-        return view('welcome', ['events' => $events ]);
+        return view('welcome', compact("events"));
     }
-
-
-    //
 
 }
