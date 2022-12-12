@@ -119,6 +119,8 @@ class EventsController extends Controller
      */
     public function getEvents(Request $request)
     {
+        $events = null;
+
         if ($request->denominaci != null) {
             $events = Events::where(EventsFilters::DENOMINACI->value, 'LIKE', '%' . $request->denominaci . '%');
         }
@@ -131,7 +133,11 @@ class EventsController extends Controller
             $events = Events::where(EventsFilters::DATA_INICI->value, '<=', date($request->data_fi));
         }
 
-        $events = $events->get();
+        if ($events != null) {
+            $events = $events->get();
+        } else {
+            return $this->getRandomEvents();
+        }
 
         return view('welcome', compact("events"));
     }
