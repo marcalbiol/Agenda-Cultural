@@ -1,4 +1,4 @@
-@vite(['resources/scss/template/filter.css','resources/js/template/filter.js']);
+@vite(['resources/css/template/filter.css','resources/js/template/filter.js']);
 
 <div class="d-flex align-items-center align-content-center page-wrapper bg-color-1 p-t-395 p-b-120">
     <div class="wrapper wrapper--w1070">

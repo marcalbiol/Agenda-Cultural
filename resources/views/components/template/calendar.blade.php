@@ -1,4 +1,4 @@
-@vite(['resources/scss/template/calendar.css','resources/js/template/calendar.js']);
+@vite(['resources/css/template/calendar.css','resources/js/template/calendar.js']);
 
 <style>
     body{
