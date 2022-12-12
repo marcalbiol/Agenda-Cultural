@@ -4,20 +4,22 @@
     <div class="wrapper wrapper--w1070">
         <div class="card card-7">
             <div class="card-body">
-                <form class="form" method="POST" action="#">
+                <form class="form" method="POST" action="/events/search">
+                    @csrf
+
                     <div class="input-group input--large">
-                        <label class="label">going to</label>
-                        <input class="input--style-1" type="text" placeholder="Destination, hotel name" name="going">
+                        <label class="label">Denominaci:</label>
+                        <input class="input--style-1" type="text" id="denominaci" placeholder="Exposició" name="denominaci">
                     </div>
 
                     <div class="input-group input--medium">
-                        <label class="label">Check-In</label>
-                        <input class="input--style-1" type="date" name="checkin" placeholder="mm/dd/yyyy" id="input-start">
+                        <label class="label">Data inici:</label>
+                        <input class="input--style-1" type="date" id="data_inici" placeholder="mm/dd/yyyy" name="data_inici">
                     </div>
 
                     <div class="input-group input--medium">
-                        <label class="label">Check-Out</label>
-                        <input class="input--style-1" type="date" name="checkout" placeholder="mm/dd/yyyy" id="input-end">
+                        <label class="label">Data fi:</label>
+                        <input class="input--style-1" type="date" id="data_fi" placeholder="mm/dd/yyyy" name="data_fi">
                     </div>
 
                     <div class="input-group input--medium">

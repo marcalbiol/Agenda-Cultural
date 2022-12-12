@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Enums\EventsFilters;
 use App\Models\Events;
-use Illuminate\View\View;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use LaravelIdea\Helper\App\Models\_IH_Events_C;
 
 class EventsController extends Controller
@@ -79,8 +82,9 @@ class EventsController extends Controller
         return $event;
     }
 
-    public function getByDate($year, $month) {
-        return Events::where('data_inici', 'LIKE', $year . '-' .$month . '%')->get();
+    public function getByDate($year, $month)
+    {
+        return Events::where('data_inici', 'LIKE', $year . '-' . $month . '%')->get();
     }
 
     public function generateSitemap()
@@ -96,9 +100,10 @@ class EventsController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
-    public function getRandomEvents() {
+    public function getRandomEvents()
+    {
         $events = Events::inRandomOrder()
             ->limit(10)
             ->get();
@@ -106,4 +111,26 @@ class EventsController extends Controller
         return view('welcome', compact("events"));
     }
 
+    /**
+     * @param string $denominaci
+     * @param string $data_inici
+     * @param string $data_fi
+     * @return Application|Factory|View
+     */
+    public function getEvents(Request $request)
+    {
+        $events = Events::where(EventsFilters::DENOMINACI->value, 'LIKE', '%' . $request->denominaci . '%');
+
+        if ($request->data_inici != null) {
+            $events = Events::where(EventsFilters::DATA_INICI->value, '>', date($request->data_inici));
+        }
+
+        if ($request->data_fi != null) {
+            $events = Events::where(EventsFilters::DATA_INICI->value, '<', date($request->data_fi));
+        }
+
+        $events = $events->get();
+
+        return view('welcome', compact("events"));
+    }
 }
