@@ -119,18 +119,37 @@ class EventsController extends Controller
      */
     public function getEvents(Request $request)
     {
-        $events = Events::where(EventsFilters::DENOMINACI->value, 'LIKE', '%' . $request->denominaci . '%');
+        $events = null;
+
+        if ($request->denominaci != null) {
+            $events = Events::where(EventsFilters::DENOMINACI->value, 'LIKE', '%' . $request->denominaci . '%');
+        }
 
         if ($request->data_inici != null) {
-            $events = Events::where(EventsFilters::DATA_INICI->value, '>', date($request->data_inici));
+            $events = Events::where(EventsFilters::DATA_INICI->value, '>=', date($request->data_inici));
         }
 
         if ($request->data_fi != null) {
-            $events = Events::where(EventsFilters::DATA_INICI->value, '<', date($request->data_fi));
+            $events = Events::where(EventsFilters::DATA_INICI->value, '<=', date($request->data_fi));
         }
 
-        $events = $events->get();
+        if ($events != null) {
+            $events = $events->get();
+        } else {
+            return $this->getRandomEvents();
+        }
 
         return view('welcome', compact("events"));
+    }
+
+    /**
+     * @param string $province
+     * @param string $category
+     */
+    public function getEventsFromProvinceAndCategory(string $province, string $category)
+    {
+        return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $province . '%')
+            ->where(EventsFilters::TAGS_CATEGOR_ES->value, 'LIKE', 'agenda:categories/' . $category . '%')->get();
+
     }
 }

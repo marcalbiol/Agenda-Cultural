@@ -12,12 +12,12 @@
 
 
 <section class="container light p-5">
-    @foreach($events as $event)
+    @forelse($events as $event)
         <article class="postcard light blue mx-auto">
             <a class="postcard__img_link" href="#">
                 <img class="postcard__img" src="{{'https://agenda.cultura.gencat.cat/'.explode(",", $event->imatges)[0]}}" alt="Image Title"/>
             </a>
-            
+
             <div class="postcard__text t-dark">
                 <h1 class="postcard__title blue"><a href="#">{{$event->denominaci}}</a></h1>
 
@@ -50,5 +50,7 @@
                 </ul>
             </div>
         </article>
-    @endforeach
+    @empty
+        <h2 class="text-dark">No se han encontrado resultados</h2>
+    @endforelse
 </section>
