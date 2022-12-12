@@ -119,14 +119,16 @@ class EventsController extends Controller
      */
     public function getEvents(Request $request)
     {
-        $events = Events::where(EventsFilters::DENOMINACI->value, 'LIKE', '%' . $request->denominaci . '%');
+        if ($request->denominaci != null) {
+            $events = Events::where(EventsFilters::DENOMINACI->value, 'LIKE', '%' . $request->denominaci . '%');
+        }
 
         if ($request->data_inici != null) {
-            $events = Events::where(EventsFilters::DATA_INICI->value, '>', date($request->data_inici));
+            $events = Events::where(EventsFilters::DATA_INICI->value, '>=', date($request->data_inici));
         }
 
         if ($request->data_fi != null) {
-            $events = Events::where(EventsFilters::DATA_INICI->value, '<', date($request->data_fi));
+            $events = Events::where(EventsFilters::DATA_INICI->value, '<=', date($request->data_fi));
         }
 
         $events = $events->get();
