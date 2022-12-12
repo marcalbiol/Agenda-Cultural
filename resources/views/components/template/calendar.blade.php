@@ -18,10 +18,10 @@
             <article class="postcard light blue">
                 <a class="postcard__img_link" href="#">
                     @if(!@getimagesize($event->imatges))
-                        <img class="postcard__img" src="{{'https://agenda.cultura.gencat.cat/'.$event->imatges}}"
+                        <img class="postcard__img" src="{{'https://agenda.cultura.gencat.cat/'.explode(",", $event->imatges)[0]}}"
                              alt="Image Title"/>
                         @else
-                        <img class="postcard__img" src="{{ asset('assets/img/hasbu.png') }}" alt="Image Title"/>
+                        <img class="postcard__img" src="{{ asset('   assets/img/hasbu.png') }}" alt="Image Title"/>
                     @endif
                 </a>
                 <div class="postcard__text t-dark">
