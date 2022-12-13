@@ -79,7 +79,7 @@ class EventsController extends Controller
      */
     public function show(Events $event)
     {
-        return $event;
+        return view('show', ['event'=>$event]);
     }
 
     public function getByDate($year, $month)
