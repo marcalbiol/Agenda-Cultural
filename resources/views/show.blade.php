@@ -29,7 +29,8 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://picsum.photos/1000/1000?random={{$event->id}}" alt="..."></div>
+                <div class="col-md-6"><img class="postcard__img" src="{{'https://agenda.cultura.gencat.cat/'.explode(",", $event->imatges)[0]}}" alt="Image Title"/>
+                </div>
                 <div class="col-md-6">
                     <div class="small mb-1">{{$event->codi}}</div>
                     <h1 class="display-5 fw-bolder">{{$event->denominaci}}</h1>

@@ -17,7 +17,7 @@
         @foreach($events as $event)
             <article class="postcard light blue">
                 <a class="postcard__img_link" href="#">
-                    <img class="postcard__img" src="https://picsum.photos/1000/1000?random={{$event->id}}" alt="Image Title"/>
+                    <img class="postcard__img" src="{{'https://agenda.cultura.gencat.cat/'.explode(",", $event->imatges)[0]}}" alt="Image Title"/>
                 </a>
                 <div class="postcard__text t-dark">
                     <h1 class="postcard__title blue"><a href="{{'events/'.$event->id}}">{{$event->denominaci}}</a></h1>
@@ -33,7 +33,6 @@
                         @if($event->entrades != "")
                             <li class="tag__item">{{$event->entrades}}</li>
                         @endif
-
                         @if($event->horari != "")
                             <li class="tag__item">{{$event->horari}}</li>
                         @endif
