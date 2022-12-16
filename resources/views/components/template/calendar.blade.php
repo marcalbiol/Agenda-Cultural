@@ -19,7 +19,7 @@
                 <a class="postcard__img_link" href="{{'events/'.$event->id}}">
                     <img class="postcard__img"
                          src="{{'https://agenda.cultura.gencat.cat/'.explode(",", $event->imatges)[0]}}"
-                         alt="Image Title"/>
+                         alt="Imagen del evento"/>
                 </a>
                 <div class="postcard__text t-dark">
                     <h1 class="postcard__title blue"><a href="{{'events/'.$event->id}}">{{$event->denominaci}}</a></h1>
