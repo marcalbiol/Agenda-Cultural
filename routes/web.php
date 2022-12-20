@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // routes are loaded by the RoueServiceProvider within a group which
 // contains the "web" middleware group. Now create something great!
 
-Route::get('/', [EventsController::class, 'getRandomEvents']);
+Route::get('/', [EventsController::class, 'getCalendarView']);
 
 Route::post('/search', [EventsController::class, 'getEvents']);
 

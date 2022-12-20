@@ -50,14 +50,7 @@
                     <span>{{$event->entrades}}</span>
                 </div>
                 <p class="lead">{{ Str::limit($event->descripcio, 350) }}</p>
-                <div class="d-flex">
-                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
-                           style="max-width: 3rem">
-                    <button class="btn btn-outline-dark flex-shrink-0 btn btn-primary" type="button">
-                        <i class="bi-cart-fill me-1"></i>
-                        Reserva
-                    </button>
-                </div>
+                
             </div>
         </div>
     </div>

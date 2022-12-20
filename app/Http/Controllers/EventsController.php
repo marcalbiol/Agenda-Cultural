@@ -31,7 +31,7 @@ class EventsController extends Controller
      */
     public function getEventNameWithCodi(string $eventName, string $codi)
     {
-        function getRandomEvents()
+        function getRandomEventsByCategoryAndProvince()
         {
             $eventsList = Events::inRandomOrder()
                 ->limit(5)
@@ -47,7 +47,7 @@ class EventsController extends Controller
             [EventsFilters::CODI->value, '=', $codi],
         ])->get();
 
-        $randomEvents = getRandomEvents();
+        $randomEvents = getRandomEventsByCategoryAndProvince();
 
         $eventAndRandomEvents = array(
             $event,
@@ -79,7 +79,8 @@ class EventsController extends Controller
      */
     public function show(Events $event)
     {
-        return view('show', ['event'=>$event]);
+        $eventsList = $this->getRandomEvents(3);
+        return view('show', ['event'=>$event, 'eventsList'=>$eventsList]);
     }
 
     public function getByDate($year, $month)
@@ -100,13 +101,24 @@ class EventsController extends Controller
     }
 
     /**
-     * @return Application|Factory|View
+     * @param int $limit
+     * @return Events
      */
-    public function getRandomEvents()
+    public function getRandomEvents($limit)
     {
         $events = Events::inRandomOrder()
-            ->limit(10)
+            ->limit($limit)
             ->get();
+
+        return $events;
+    }
+
+    /**
+     * @param int
+     * @return Application|Factory|View
+     */
+    public function getCalendarView() {
+        $events = $this->getRandomEvents(10);
 
         return view('welcome', compact("events"));
     }
@@ -136,7 +148,7 @@ class EventsController extends Controller
         if ($events != null) {
             $events = $events->get();
         } else {
-            return $this->getRandomEvents();
+            return $this->getRandomEvents(10);
         }
 
         return view('welcome', compact("events"));
