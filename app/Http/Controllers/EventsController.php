@@ -79,7 +79,7 @@ class EventsController extends Controller
      */
     public function show(Events $event)
     {
-        $eventsList = $this->getRandomEvents(3);
+        $eventsList = $this->getRandomEvents(3, $event->comarca_i_municipi);
         return view('show', ['event'=>$event, 'eventsList'=>$eventsList]);
     }
 
@@ -102,11 +102,13 @@ class EventsController extends Controller
 
     /**
      * @param int $limit
+     * @param string $province
      * @return Events
      */
-    public function getRandomEvents($limit)
+    public function getRandomEvents($limit, $province = null)
     {
         $events = Events::inRandomOrder()
+            ->where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', $province . '%')
             ->limit($limit)
             ->get();
 
