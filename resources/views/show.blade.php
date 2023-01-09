@@ -50,7 +50,18 @@
                     <span>{{$event->entrades}}</span>
                 </div>
                 <p class="lead">{{ Str::limit($event->descripcio, 350) }}</p>
-                
+            </div>
+            <div class="carrousel d-flex justify-content-around" style="margin-top: 7rem">
+                @foreach ($eventsList as $event)
+                <div class="card" style="width: 19rem;">
+                    <img class="card-img-top" src="{{'https://agenda.cultura.gencat.cat/'.explode(",", $event->imatges)[0]}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">{{$event->denominaci}}</h5>
+                      <p class="card-text">{{ Str::limit($event->descripcio, 75) }}</p>
+                      <button class="btn btn-primary" href="{{'events/'.$event->id}}">Ver más</button>
+                    </div>
+                  </div>
+                @endforeach
             </div>
         </div>
     </div>
