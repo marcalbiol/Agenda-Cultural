@@ -1,5 +1,5 @@
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
-    <div class="row" style="margin-left: 16rem; margin-top: 3rem">
+    <div class="row" style="margin:0 1rem 0 23rem">
         <div class="col-12 col-md">
             <img class="mb-2" src="{{ asset('assets/img/logo_gene.png') }}" alt="" width="150px" height="150px">
             <span style="color: black; !important;">Departament de cultura</span>
