@@ -22,10 +22,16 @@
 
     <!-- Flowbite -->
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css"/>
-
     <!--css-->
-    @vite(['resources/css/template/show.css']);
-
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+        body {
+            font-family: "Baloo 2", cursive;
+            font-size: 16px;
+            text-rendering: optimizeLegibility;
+            font-weight: initial;
+        }
+    </style>
 </head>
 <body>
 
