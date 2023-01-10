@@ -28,9 +28,6 @@
 
 <x-template.navuser/>
 
-
-<!-- TODO BOTON PARA VOLVER HACIA ATRAS? -->
-
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
@@ -55,10 +52,10 @@
                 @foreach ($eventsList as $event)
                 <div class="card" style="width: 19rem;">
                     <img class="card-img-top" src="{{'https://agenda.cultura.gencat.cat/'.explode(",", $event->imatges)[0]}}" alt="Card image cap">
-                    <div class="card-body">
+                    <div class="card-body" style="display: flex; flex-direction: column !important;">
                       <h5 class="card-title">{{$event->denominaci}}</h5>
-                      <p class="card-text">{{ Str::limit($event->descripcio, 75) }}</p>
-                      <button class="btn btn-primary" href="{{'events/'.$event->id}}">Ver más</button>
+                      <p class="card-text mb-2">{{ Str::limit($event->descripcio, 75) }}</p>
+                      <a class="btn btn-primary" style="margin-top: auto; width: 7rem; !important;" href="{{$event->id}}">Ver más</a>
                     </div>
                   </div>
                 @endforeach
