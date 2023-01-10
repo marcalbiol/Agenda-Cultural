@@ -22,11 +22,36 @@
 
     <!-- Flowbite -->
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css"/>
+
+    <!--css-->
+    @vite('resources/css/template/show.css');
+
 </head>
 <body>
 
-<x-template.navuser/>
+<nav
+    class="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+    <div class="container flex-nowrap items-center mx-auto">
+        <a href="http://quefer.cat/" class="flex items-center" style="float: left">
+            <img src="{{ asset('assets/img/logo.jpeg') }}" class="h-6 mr-3 sm:h-9" alt="QueFer Logo"
+                 style="width: 170px; height: 70px">
+            <span class="self-center text-xl font-bold whitespace-nowrap dark:text-white"
+                  style="color: black !important;">QueFer</span>
+        </a>
+        <div style="float: right; margin-top: 10px; margin-right: 50px">
+            <a href="http://instagram.com">
+                <img src="{{ asset('assets/img/instagram.png') }}" alt="Instagram" style="height: 50px; float: right">
+            </a>
+
+            <a href="http://facebook.com">
+                <img src="{{ asset('assets/img/facebook.png') }}" alt="Facebook" style="height: 50px; float: right">
+            </a>
+            <a href="http://twitter.com">
+                <img src="{{ asset('assets/img/twitter.png') }}" alt="Twitter" style="height: 50px; float: right">
+            </a>
+        </div>
+    </div>
+</nav>
 
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
@@ -50,18 +75,22 @@
             </div>
             <div class="carrousel d-flex justify-content-around" style="margin-top: 7rem">
                 @foreach ($eventsList as $event)
-                <div class="card" style="width: 19rem;">
-                    <img class="card-img-top" src="{{'https://agenda.cultura.gencat.cat/'.explode(",", $event->imatges)[0]}}" alt="Card image cap">
-                    <div class="card-body" style="display: flex; flex-direction: column !important;">
-                      <h5 class="card-title">{{$event->denominaci}}</h5>
-                      <p class="card-text mb-2">{{ Str::limit($event->descripcio, 75) }}</p>
-                      <a class="btn btn-primary" style="margin-top: auto; width: 7rem; !important;" href="{{$event->id}}">Ver más</a>
+                    <div class="card" style="width: 19rem;">
+                        <img class="card-img-top"
+                             src="{{'https://agenda.cultura.gencat.cat/'.explode(",", $event->imatges)[0]}}"
+                             alt="Card image cap">
+                        <div class="card-body" style="display: flex; flex-direction: column !important;">
+                            <h5 class="card-title">{{$event->denominaci}}</h5>
+                            <p class="card-text mb-2">{{ Str::limit($event->descripcio, 75) }}</p>
+                            <a class="btn btn-primary" style="margin-top: auto; width: 7rem; !important;"
+                               href="{{$event->id}}">Ver más</a>
+                        </div>
                     </div>
-                  </div>
                 @endforeach
             </div>
         </div>
     </div>
 </section>
+<x-template.footer/>
 </body>
 </html>
