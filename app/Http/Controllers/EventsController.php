@@ -78,9 +78,10 @@ class EventsController extends Controller
      * y llamara a este metodo
      */
     public function show(Events $event)
+
     {
         $eventsList = $this->getRandomEvents(3, $event->comarca_i_municipi);
-        return view('show', ['event'=>$event, 'eventsList'=>$eventsList]);
+        return view('show', ['event' => $event, 'eventsList' => $eventsList]);
     }
 
     public function getByDate($year, $month)
@@ -119,7 +120,8 @@ class EventsController extends Controller
      * @param int
      * @return Application|Factory|View
      */
-    public function getCalendarView() {
+    public function getCalendarView()
+    {
         $events = $this->getRandomEvents(10);
 
         return view('welcome', compact("events"));
@@ -150,7 +152,8 @@ class EventsController extends Controller
         if ($events != null) {
             $events = $events->get();
         } else {
-            return $this->getRandomEvents(10);
+            $events = $this->getRandomEvents(10);
+            return view('welcome', compact("events"));
         }
 
         return view('welcome', compact("events"));
