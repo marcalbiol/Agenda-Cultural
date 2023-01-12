@@ -8,8 +8,8 @@
                     @csrf
 
                     <div class="input-group input--large">
-                        <label class="label">Denominaci:</label>
-                        <input class="input--style-1" type="text" id="denominaci" placeholder="Exposició" name="denominaci">
+                        <label class="label">Nom de l'esdeveniment:</label>
+                        <input class="input--style-1" type="text" id="denominaci" name="denominaci">
                     </div>
 
                     <div class="input-group input--medium">
@@ -29,4 +29,3 @@
     </div>
 </div>
 
-<!-- This templates was made by Colorlib (https://colorlib.com) -->

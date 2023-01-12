@@ -150,7 +150,8 @@ class EventsController extends Controller
         if ($events != null) {
             $events = $events->get();
         } else {
-            return $this->getRandomEvents(10);
+            $events = $this->getRandomEvents(10);
+            return view('welcome', compact("events"));
         }
 
         return view('welcome', compact("events"));

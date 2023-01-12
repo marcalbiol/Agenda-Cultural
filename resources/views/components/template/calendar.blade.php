@@ -14,7 +14,7 @@
 
 <section class="light">
     <div class="container py-2">
-        @foreach($events as $event)
+        @forelse($events as $event)
             <article class="postcard light blue">
                 <a class="postcard__img_link" href="{{'events/'.$event->id}}">
                     <img class="postcard__img"
@@ -49,6 +49,8 @@
                     </ul>
                 </div>
             </article>
-        @endforeach
+        @empty
+            <h2 class="text-dark">No se han encontrado resultados</h2>
+        @endforelse
     </div>
 </section>
