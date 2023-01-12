@@ -22,7 +22,7 @@
                         <input class="input--style-1" type="date" id="data_fi" placeholder="mm/dd/yyyy" name="data_fi">
                     </div>
 
-                    <button class="btn-submit" type="submit" disabled>search</button>
+                    <button class="btn-submit" type="submit">search</button>
                 </form>
             </div>
         </div>
