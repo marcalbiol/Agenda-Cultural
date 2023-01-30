@@ -2,7 +2,7 @@
     <div class="container flex-nowrap items-center mx-auto">
         <a href="http://quefer.cat/" class="flex items-center" style="float: left">
             <img src="{{ asset('assets/img/logo.jpeg') }}" class="h-6 mr-3 sm:h-9" alt="QueFer Logo" style="width: 170px; height: 70px">
-            <span class="self-center text-xl font-bold whitespace-nowrap dark:text-white" style="color: black !important;">QueFer</span>
+            <span class="self-center text-xl font-bold whitespace-nowrap dark:text-white" style="color: black !important;">QuèFer</span>
         </a>
 
         <div style="float: right; margin-top: 10px; margin-right: -10rem">

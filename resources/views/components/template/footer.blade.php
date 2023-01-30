@@ -10,7 +10,7 @@
             </ul>
         </div>
         <div class="col-6 col-md">
-            <span style="color: black; font-size: 30px; !important;">Conecta</span>
+            <span style="color: black; font-size: 30px; !important;">Connecta</span>
             <ul class="list-unstyled">
                 <li><a class="text-muted" href="#">Facebook</a></li>
                 <li><a class="text-muted" href="#">Instagram</a></li>
