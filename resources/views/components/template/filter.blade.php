@@ -12,7 +12,7 @@
                         <input class="input--style-1" type="text" id="denominaci" name="denominaci">
                     </div>
 
-                    <div class="input-group input--medium">
+                    <div class="input-group input--medium">º
                         <label class="label">Data inici:</label>
                         <input class="input--style-1" type="date" id="data_inici" placeholder="mm/dd/yyyy" name="data_inici">
                     </div>

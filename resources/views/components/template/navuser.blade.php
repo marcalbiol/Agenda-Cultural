@@ -4,17 +4,5 @@
             <img src="{{ asset('assets/img/logo.jpeg') }}" class="h-6 mr-3 sm:h-9" alt="QueFer Logo" style="width: 170px; height: 70px">
             <span class="self-center text-xl font-bold whitespace-nowrap dark:text-white" style="color: black !important;">QuèFer</span>
         </a>
-
-        <div style="float: right; margin-top: 10px; margin-right: -10rem">
-            <a href="http://twitter.com">
-                <img src="{{ asset('assets/img/twitter.png') }}" alt="Twitter" style="height: 50px; float: right; padding-left: 1rem">
-            </a>
-            <a href="http://facebook.com">
-                <img src="{{ asset('assets/img/facebook.png') }}" alt="Facebook" style="height: 50px; float: right; padding-left: 1rem">
-            </a>
-            <a href="http://instagram.com">
-                <img src="{{ asset('assets/img/instagram.png') }}" alt="Instagram" style="height: 50px; float: right; padding-left: 1rem">
-            </a>
-        </div>
     </div>
 </nav>

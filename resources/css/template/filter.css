@@ -700,9 +700,14 @@ button {
 
 .label {
     font-size: 12px;
-    color: #999;
+    color: #110f16;
     text-transform: uppercase;
     display: block;
+    font-weight: 700;
+}
+
+.text-footer {
+    color: #110f16;
     font-weight: 700;
 }
 
