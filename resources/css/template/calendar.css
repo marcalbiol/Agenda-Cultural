@@ -33,7 +33,7 @@ body {
     margin: 0 0 2rem 0;
     overflow: hidden;
     position: relative;
-    color: #ffffff;
+    color: black;
 }
 .postcard.dark {
     background-color: #18151f;
@@ -153,6 +153,7 @@ body {
     }
     .postcard:hover .postcard__img {
         transform: scale(1.1);
+        color: #110f16;
     }
     .postcard:nth-child(2n+1) {
         flex-direction: row;

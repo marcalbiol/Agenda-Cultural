@@ -11,7 +11,7 @@
     }
 </style>
 
-
+1
 <section class="light">
     <div class="container py-2">
         @forelse($events as $event)
