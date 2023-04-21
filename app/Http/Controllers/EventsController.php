@@ -164,7 +164,8 @@ class EventsController extends Controller
     public function getEventsFromProvinceAndCategory(string $province, string $category)
     {
         return Events::where(EventsFilters::COMARCA_I_MUNICIPI->value, 'LIKE', 'agenda:ubicacions/' . $province . '%')
-            ->where(EventsFilters::TAGS_CATEGOR_ES->value, 'LIKE', 'agenda:categories/' . $category . '%')->get();
+            ->where(EventsFilters::TAGS_CATEGOR_ES->value, 'LIKE', 'agenda:categories/' . $category . '%')
+            ->get();
 
     }
 }
